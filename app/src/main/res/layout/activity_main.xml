@@ -32,18 +32,6 @@
         app:layout_constraintStart_toEndOf="@+id/teamNumber"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <SeekBar
-        android:id="@+id/b_hatch"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="139dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="8dp"
-        android:max="4"
-        android:progress="0"
-        app:layout_constraintBottom_toBottomOf="@+id/b_ball"
-        app:layout_constraintStart_toEndOf="@+id/b_ball"
-        app:layout_constraintTop_toTopOf="@+id/b_ball" />
-
     <EditText
         android:id="@+id/teamNumber"
         android:layout_width="75dp"
@@ -55,31 +43,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/matchNumber"
         app:layout_constraintStart_toEndOf="@+id/matchNumber"
         app:layout_constraintTop_toTopOf="@+id/matchNumber" />
-
-    <SeekBar
-        android:id="@+id/top_ball"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="139dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="8dp"
-        android:max="4"
-        android:progress="0"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/t_rocket"
-        app:layout_constraintStart_toEndOf="@+id/t_rocket"
-        app:layout_constraintTop_toTopOf="@+id/t_rocket" />
-
-    <SeekBar
-        android:id="@+id/m_hatch"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="139dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="8dp"
-        android:max="4"
-        android:progress="0"
-        app:layout_constraintBottom_toBottomOf="@+id/m_ball"
-        app:layout_constraintStart_toEndOf="@+id/m_ball"
-        app:layout_constraintTop_toTopOf="@+id/m_ball" />
 
     <EditText
         android:id="@+id/ScouterName"
@@ -119,43 +82,6 @@
         app:layout_constraintTop_toBottomOf="@+id/m_rocket"
         tools:layout_editor_absoluteX="0dp" />
 
-    <SeekBar
-        android:id="@+id/m_ball"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="139dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:max="4"
-        android:progress="0"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/b_ball"
-        app:layout_constraintStart_toEndOf="@+id/m_rocket"
-        app:layout_constraintTop_toBottomOf="@+id/top_ball" />
-
-    <TextView
-        android:id="@+id/RHatch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Hatch Pannal"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/t_hatch"
-        app:layout_constraintEnd_toEndOf="@+id/t_hatch"
-        app:layout_constraintStart_toStartOf="@+id/t_hatch" />
-
-    <TextView
-        android:id="@+id/RBall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Cargo"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/top_ball"
-        app:layout_constraintEnd_toEndOf="@+id/top_ball"
-        app:layout_constraintStart_toStartOf="@+id/top_ball" />
-
     <Button
         android:id="@+id/t_rocket"
         android:layout_width="wrap_content"
@@ -164,31 +90,6 @@
         android:text="Top"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
-
-    <SeekBar
-        android:id="@+id/t_hatch"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="139dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="8dp"
-        android:max="4"
-        android:progress="0"
-        app:layout_constraintBottom_toBottomOf="@+id/top_ball"
-        app:layout_constraintStart_toEndOf="@+id/top_ball"
-        app:layout_constraintTop_toTopOf="@+id/top_ball" />
-
-    <SeekBar
-        android:id="@+id/b_ball"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="139dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="8dp"
-        android:max="4"
-        android:progress="0"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/b_rocket"
-        app:layout_constraintStart_toEndOf="@+id/b_rocket"
-        app:layout_constraintTop_toTopOf="@+id/b_rocket" />
 
     <EditText
         android:id="@+id/matchNumber"
@@ -212,142 +113,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <CheckBox
-        android:id="@+id/LeftBall"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/leftHatch"
-        app:layout_constraintEnd_toEndOf="@+id/b_ball"
-        app:layout_constraintHorizontal_bias="0.271"
-        app:layout_constraintStart_toStartOf="@+id/b_ball"
-        app:layout_constraintTop_toBottomOf="@+id/b_ball"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <CheckBox
-        android:id="@+id/LeftBall2"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/LeftBall"
-        app:layout_constraintEnd_toEndOf="@+id/b_ball"
-        app:layout_constraintStart_toEndOf="@+id/LeftBall"
-        app:layout_constraintTop_toTopOf="@+id/LeftBall"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <CheckBox
-        android:id="@+id/leftHatch"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/b_hatch"
-        app:layout_constraintTop_toBottomOf="@+id/b_hatch" />
-
-    <CheckBox
-        android:id="@+id/leftHatch6"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/b_hatch"
-        app:layout_constraintStart_toEndOf="@+id/leftHatch"
-        app:layout_constraintTop_toBottomOf="@+id/b_hatch" />
-
-    <CheckBox
-        android:id="@+id/CenterBall"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/LeftBall"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/LeftBall"
-        app:layout_constraintTop_toBottomOf="@+id/LeftBall" />
-
-    <CheckBox
-        android:id="@+id/CenterBall2"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/CenterBall"
-        app:layout_constraintEnd_toEndOf="@+id/LeftBall2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/CenterBall"
-        app:layout_constraintTop_toTopOf="@+id/CenterBall" />
-
-    <CheckBox
-        android:id="@+id/CenterHatch"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/leftHatch"
-        app:layout_constraintStart_toStartOf="@+id/leftHatch"
-        app:layout_constraintTop_toBottomOf="@+id/leftHatch" />
-
-    <CheckBox
-        android:id="@+id/centerHatch"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/leftHatch6"
-        app:layout_constraintStart_toStartOf="@+id/leftHatch6"
-        app:layout_constraintTop_toBottomOf="@+id/leftHatch6" />
-
-    <CheckBox
-        android:id="@+id/RightBall"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/CenterBall"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/CenterBall"
-        app:layout_constraintTop_toBottomOf="@+id/CenterBall" />
-
-    <CheckBox
-        android:id="@+id/RightBall2"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/RightBall"
-        app:layout_constraintEnd_toEndOf="@+id/CenterBall2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/CenterBall2"
-        app:layout_constraintTop_toBottomOf="@+id/CenterBall2"
-        app:layout_constraintVertical_bias="0.333" />
-
-    <CheckBox
-        android:id="@+id/RightHatch"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:checked="false"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        app:layout_constraintBottom_toBottomOf="@+id/RightBall2"
-        app:layout_constraintEnd_toEndOf="@+id/CenterHatch"
-        app:layout_constraintStart_toStartOf="@+id/CenterHatch"
-        app:layout_constraintTop_toBottomOf="@+id/CenterHatch" />
-
-    <CheckBox
-        android:id="@+id/rightHatch"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginTop="16dp"
-        android:checked="false"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        app:layout_constraintBottom_toBottomOf="@+id/RightHatch"
-        app:layout_constraintEnd_toEndOf="@+id/centerHatch"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/centerHatch"
-        app:layout_constraintTop_toBottomOf="@+id/centerHatch" />
-
     <TextView
         android:id="@+id/Left"
         android:layout_width="wrap_content"
@@ -364,11 +129,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         android:text="Center"
         android:textSize="25sp"
-        app:layout_constraintEnd_toStartOf="@+id/CenterBall"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/Left"
         app:layout_constraintTop_toBottomOf="@+id/Left" />
 
@@ -377,11 +139,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         android:text="Right"
         android:textSize="25sp"
-        app:layout_constraintEnd_toStartOf="@+id/RightBall"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/Center"
         app:layout_constraintTop_toBottomOf="@+id/Center" />
 
@@ -414,23 +173,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="ball"
+        android:text="Cargo"
         app:layout_constraintBottom_toBottomOf="@+id/SHatch"
         app:layout_constraintEnd_toEndOf="@+id/matchNumber"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.036"
         app:layout_constraintStart_toStartOf="@+id/ScouterName"
-        app:layout_constraintTop_toTopOf="@+id/SHatch" />
+        app:layout_constraintTop_toTopOf="@+id/SHatch"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/SHatch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="176dp"
         android:layout_marginEnd="8dp"
         android:text="Hatch"
         app:layout_constraintEnd_toEndOf="@+id/teamNumber"
-        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="@+id/matchNumber"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -442,14 +202,14 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="StandStorm"
+        android:text="SandStorm"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/SBall"
         app:layout_constraintEnd_toEndOf="@+id/SHatch"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/SBall"
         app:layout_constraintTop_toBottomOf="@+id/matchNumber"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintVertical_bias="0.312" />
 
     <Spinner
         android:id="@+id/wlt"
@@ -461,5 +221,189 @@
         app:layout_constraintEnd_toStartOf="@+id/Notes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/Notes" />
+
+    <CheckBox
+        android:id="@+id/RTopleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/t_rocket"
+        app:layout_constraintStart_toEndOf="@+id/t_rocket"
+        app:layout_constraintTop_toTopOf="@+id/t_rocket" />
+
+    <CheckBox
+        android:id="@+id/RTopright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RTopleft"
+        app:layout_constraintStart_toEndOf="@+id/BtnTN" />
+
+    <CheckBox
+        android:id="@+id/RTopleft1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/RTopright"
+        app:layout_constraintStart_toEndOf="@+id/RTopright"
+        app:layout_constraintTop_toTopOf="@+id/RTopright" />
+
+    <CheckBox
+        android:id="@+id/RTopright1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/RTopleft1"
+        app:layout_constraintStart_toEndOf="@+id/BtnTnr"
+        app:layout_constraintTop_toTopOf="@+id/RTopleft1" />
+
+    <CheckBox
+        android:id="@+id/Rmiddleleft1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RmiddleRight"
+        app:layout_constraintStart_toEndOf="@+id/RmiddleRight" />
+
+    <CheckBox
+        android:id="@+id/RmiddleLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/m_rocket"
+        app:layout_constraintStart_toEndOf="@+id/m_rocket"
+        app:layout_constraintTop_toTopOf="@+id/m_rocket" />
+
+    <CheckBox
+        android:id="@+id/RmiddleRight1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/Rmiddleleft1"
+        app:layout_constraintEnd_toEndOf="@+id/RTopright1"
+        app:layout_constraintStart_toEndOf="@+id/BtnTnr" />
+
+    <CheckBox
+        android:id="@+id/RmiddleRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RmiddleLeft"
+        app:layout_constraintEnd_toEndOf="@+id/RTopright"
+        app:layout_constraintStart_toEndOf="@+id/BtnTN" />
+
+    <CheckBox
+        android:id="@+id/RBottoml"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/b_rocket"
+        app:layout_constraintStart_toEndOf="@+id/b_rocket"
+        app:layout_constraintTop_toTopOf="@+id/b_rocket" />
+
+    <CheckBox
+        android:id="@+id/RBottomRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RBottoml"
+        app:layout_constraintEnd_toEndOf="@+id/RmiddleRight"
+        app:layout_constraintStart_toStartOf="@+id/RmiddleRight" />
+
+    <CheckBox
+        android:id="@+id/RBottomleft1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RBottomRight"
+        app:layout_constraintStart_toEndOf="@+id/RBottomRight" />
+
+    <CheckBox
+        android:id="@+id/RBottomRight1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RBottomleft1"
+        app:layout_constraintEnd_toEndOf="@+id/RmiddleRight1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/RmiddleRight1" />
+
+    <Button
+        android:id="@+id/BtnTP"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="36dp"
+        android:layout_height="43dp"
+        android:text="+"
+        android:textAlignment="viewEnd"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/RTopleft"
+        app:layout_constraintStart_toEndOf="@+id/RTopleft"
+        app:layout_constraintTop_toTopOf="@+id/RTopleft" />
+
+    <Button
+        android:id="@+id/btnTPr"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="36dp"
+        android:layout_height="43dp"
+        android:text="+"
+        android:textAlignment="viewEnd"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/RTopleft1"
+        app:layout_constraintStart_toEndOf="@+id/RTopleft1"
+        app:layout_constraintTop_toTopOf="@+id/RTopleft1" />
+
+    <TextView
+        android:id="@+id/tn"
+        android:layout_width="32dp"
+        android:layout_height="41dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/BtnTP"
+        app:layout_constraintStart_toEndOf="@+id/BtnTP" />
+
+    <Button
+        android:id="@+id/BtnTN"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="33dp"
+        android:layout_height="43dp"
+        android:text="-"
+        android:textAlignment="viewStart"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tn"
+        app:layout_constraintStart_toEndOf="@+id/tn"
+        tools:text="-" />
+
+    <Button
+        android:id="@+id/BtnTnr"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="33dp"
+        android:layout_height="43dp"
+        android:text="-"
+        android:textAlignment="viewStart"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tnr"
+        app:layout_constraintStart_toEndOf="@+id/tnr"
+        tools:text="-" />
+
+    <TextView
+        android:id="@+id/tnr"
+        android:layout_width="32dp"
+        android:layout_height="41dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnTPr"
+        app:layout_constraintStart_toEndOf="@+id/btnTPr" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/finalScore"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/finalScore"
+        app:layout_constraintTop_toBottomOf="@+id/finalScore"
+        app:srcCompat="@android:drawable/ic_menu_save" />
 
 </android.support.constraint.ConstraintLayout>
