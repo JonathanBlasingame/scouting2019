@@ -217,6 +217,7 @@
         android:layout_height="29dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:entries="@array/wltValues"
         app:layout_constraintBottom_toBottomOf="@+id/Notes"
         app:layout_constraintEnd_toStartOf="@+id/Notes"
         app:layout_constraintStart_toStartOf="parent"
@@ -396,7 +397,7 @@
         app:layout_constraintStart_toEndOf="@+id/btnTPr" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/s1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -405,5 +406,150 @@
         app:layout_constraintStart_toStartOf="@+id/finalScore"
         app:layout_constraintTop_toBottomOf="@+id/finalScore"
         app:srcCompat="@android:drawable/ic_menu_save" />
+
+    <Button
+        android:id="@+id/BtnMP"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="36dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="+"
+        android:textAlignment="viewStart"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/RmiddleLeft"
+        app:layout_constraintEnd_toStartOf="@+id/tn"
+        app:layout_constraintStart_toEndOf="@+id/RmiddleLeft"
+        app:layout_constraintTop_toTopOf="@+id/RmiddleLeft" />
+
+    <TextView
+        android:id="@+id/Mn"
+        android:layout_width="32dp"
+        android:layout_height="41dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/BtnMP"
+        app:layout_constraintStart_toEndOf="@+id/BtnMP" />
+
+    <Button
+        android:id="@+id/BtnMN"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="36dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="-"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/Mn"
+        app:layout_constraintEnd_toStartOf="@+id/RmiddleRight"
+        app:layout_constraintStart_toEndOf="@+id/Mn" />
+
+    <Button
+        android:id="@+id/BtnBP"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="36dp"
+        android:layout_height="43dp"
+        android:text="+"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RBottoml"
+        app:layout_constraintStart_toEndOf="@+id/RBottoml" />
+
+    <TextView
+        android:id="@+id/Bn"
+        android:layout_width="32dp"
+        android:layout_height="41dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/BtnBP"
+        app:layout_constraintEnd_toEndOf="@+id/Mn"
+        app:layout_constraintStart_toStartOf="@+id/Mn" />
+
+    <Button
+        android:id="@+id/BtnBN"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="36dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="-"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/Bn"
+        app:layout_constraintEnd_toStartOf="@+id/RmiddleRight"
+        app:layout_constraintStart_toEndOf="@+id/Mn" />
+
+    <TextView
+        android:id="@+id/nmr"
+        android:layout_width="32dp"
+        android:layout_height="41dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/BtnMPr"
+        app:layout_constraintEnd_toEndOf="@+id/tnr"
+        app:layout_constraintStart_toStartOf="@+id/tnr" />
+
+    <Button
+        android:id="@+id/BtnMPr"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="36dp"
+        android:layout_height="41dp"
+        android:text="+"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Rmiddleleft1"
+        app:layout_constraintStart_toEndOf="@+id/Rmiddleleft1"
+        app:layout_constraintTop_toTopOf="@+id/Rmiddleleft1" />
+
+    <Button
+        android:id="@+id/BtnMNr"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="36dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="-"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/nmr"
+        app:layout_constraintEnd_toStartOf="@+id/RmiddleRight1"
+        app:layout_constraintStart_toEndOf="@+id/nmr" />
+
+    <Button
+        android:id="@+id/BtnBPr"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="36dp"
+        android:layout_height="41dp"
+        android:text="+"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RBottomleft1"
+        app:layout_constraintStart_toEndOf="@+id/RBottomleft1" />
+
+    <TextView
+        android:id="@+id/BNr"
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/BtnBPr"
+        app:layout_constraintEnd_toEndOf="@+id/nmr"
+        app:layout_constraintStart_toEndOf="@+id/BtnBPr" />
+
+    <Button
+        android:id="@+id/BtnBNr"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="36dp"
+        android:layout_height="41dp"
+        android:text="-"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/BtnBPr"
+        app:layout_constraintEnd_toStartOf="@+id/RBottomRight1"
+        app:layout_constraintStart_toEndOf="@+id/nmr" />
 
 </android.support.constraint.ConstraintLayout>
