@@ -9,6 +9,22 @@
     tools:layout_editor_absoluteY="25dp">
 
     <CheckBox
+        android:id="@+id/RLH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/Right"
+        app:layout_constraintEnd_toEndOf="@+id/RBottoml"
+        app:layout_constraintStart_toStartOf="@+id/RBottoml" />
+
+    <CheckBox
+        android:id="@+id/CLH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/Center"
+        app:layout_constraintEnd_toEndOf="@+id/RBottoml"
+        app:layout_constraintStart_toStartOf="@+id/RBottoml" />
+
+    <CheckBox
         android:id="@+id/blueAlliance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -144,6 +160,17 @@
         app:layout_constraintStart_toStartOf="@+id/Center"
         app:layout_constraintTop_toBottomOf="@+id/Center" />
 
+    <TextView
+        android:id="@+id/front"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Front"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/Right"
+        app:layout_constraintStart_toStartOf="@+id/Right"
+        app:layout_constraintTop_toBottomOf="@+id/Right" />
+
     <EditText
         android:id="@+id/finalScore"
         android:layout_width="wrap_content"
@@ -157,7 +184,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/Notes"
+        android:id="@+id/notes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -218,10 +245,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:entries="@array/wltValues"
-        app:layout_constraintBottom_toBottomOf="@+id/Notes"
-        app:layout_constraintEnd_toStartOf="@+id/Notes"
+        app:layout_constraintBottom_toBottomOf="@+id/notes"
+        app:layout_constraintEnd_toStartOf="@+id/notes"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Notes" />
+        app:layout_constraintTop_toTopOf="@+id/notes" />
 
     <CheckBox
         android:id="@+id/RTopleft"
@@ -551,5 +578,119 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/BtnBPr"
         app:layout_constraintEnd_toStartOf="@+id/RBottomRight1"
         app:layout_constraintStart_toEndOf="@+id/nmr" />
+
+    <CheckBox
+        android:id="@+id/LH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/Left"
+        app:layout_constraintEnd_toEndOf="@+id/RBottoml"
+        app:layout_constraintStart_toStartOf="@+id/RBottoml" />
+
+    <CheckBox
+        android:id="@+id/FLH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/front"
+        app:layout_constraintEnd_toEndOf="@+id/RBottoml"
+        app:layout_constraintStart_toStartOf="@+id/RBottoml" />
+
+    <CheckBox
+        android:id="@+id/LRH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/LB"
+        app:layout_constraintEnd_toEndOf="@+id/RBottomleft1"
+        app:layout_constraintStart_toStartOf="@+id/RBottomleft1" />
+
+    <CheckBox
+        android:id="@+id/CRH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/CLB"
+        app:layout_constraintEnd_toEndOf="@+id/RBottomleft1"
+        app:layout_constraintStart_toStartOf="@+id/RBottomleft1" />
+
+    <CheckBox
+        android:id="@+id/FRH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/FLB"
+        app:layout_constraintEnd_toEndOf="@+id/RBottomleft1"
+        app:layout_constraintStart_toStartOf="@+id/RBottomleft1" />
+
+    <CheckBox
+        android:id="@+id/RRH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RLB"
+        app:layout_constraintEnd_toEndOf="@+id/RBottomleft1"
+        app:layout_constraintStart_toStartOf="@+id/RBottomleft1" />
+
+    <CheckBox
+        android:id="@+id/LB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/LH"
+        app:layout_constraintEnd_toEndOf="@+id/Bn"
+        app:layout_constraintStart_toStartOf="@+id/Bn" />
+
+    <CheckBox
+        android:id="@+id/LRB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/LRH"
+        app:layout_constraintEnd_toEndOf="@+id/BNr"
+        app:layout_constraintStart_toStartOf="@+id/BNr" />
+
+    <CheckBox
+        android:id="@+id/CRB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/CRH"
+        app:layout_constraintEnd_toEndOf="@+id/LRB"
+        app:layout_constraintStart_toStartOf="@+id/LRB" />
+
+    <CheckBox
+        android:id="@+id/FLB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/FLH"
+        app:layout_constraintEnd_toStartOf="@+id/BtnBN"
+        app:layout_constraintStart_toStartOf="@+id/Bn" />
+
+    <CheckBox
+        android:id="@+id/checkBox7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/FRH"
+        app:layout_constraintEnd_toEndOf="@+id/RRB"
+        app:layout_constraintStart_toStartOf="@+id/RRB" />
+
+    <CheckBox
+        android:id="@+id/RRB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RRH"
+        app:layout_constraintEnd_toEndOf="@+id/CRB"
+        app:layout_constraintStart_toStartOf="@+id/CRB" />
+
+    <CheckBox
+        android:id="@+id/CLB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/CLH"
+        app:layout_constraintEnd_toEndOf="@+id/Bn"
+        app:layout_constraintStart_toStartOf="@+id/Bn" />
+
+    <CheckBox
+        android:id="@+id/RLB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RLH"
+        app:layout_constraintEnd_toEndOf="@+id/Bn"
+        app:layout_constraintStart_toStartOf="@+id/Bn" />
 
 </android.support.constraint.ConstraintLayout>
