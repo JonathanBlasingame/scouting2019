@@ -581,8 +581,10 @@
 
     <CheckBox
         android:id="@+id/LH"
+        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBaseline_toBaselineOf="@+id/Left"
         app:layout_constraintEnd_toEndOf="@+id/RBottoml"
         app:layout_constraintStart_toStartOf="@+id/RBottoml" />
@@ -659,10 +661,11 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/FLH"
         app:layout_constraintEnd_toStartOf="@+id/BtnBN"
-        app:layout_constraintStart_toStartOf="@+id/Bn" />
+        app:layout_constraintStart_toStartOf="@+id/Bn"
+        tools:checked="false" />
 
     <CheckBox
-        android:id="@+id/checkBox7"
+        android:id="@+id/FRB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/FRH"

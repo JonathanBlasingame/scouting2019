@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     int teamNumber = 0;
     String ScouterName = "";
     int finalScore = 0;
-    String matchNumber= "";
+    String matchNumber = "";
     TextView txtCount;
 
     @Override
@@ -251,14 +252,58 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void resetapp(){
-        ((CheckBox)findViewById(R.id.LH)).setChecked(false);
-        ((TextView)findViewById(R.id.matchNumber)).setText(""+(1+Integer.parseInt(((TextView)findViewById(R.id.matchNumber)).getText().toString())));
-        ((TextView)findViewById(R.id.teamNumber)).setText("");
-        ((TextView)findViewById(R.id.finalScore)).setText("");
+
+    public void resetapp() {
+        ((TextView) findViewById(R.id.matchNumber)).setText("" + (1 + Integer.parseInt(((TextView) findViewById(R.id.matchNumber)).getText().toString())));
+        ((TextView) findViewById(R.id.teamNumber)).setText("");
+        ((TextView) findViewById(R.id.finalScore)).setText("");
+        ((TextView) findViewById(R.id.notes)).setText("");
+        ((CheckBox) findViewById(R.id.RTopleft)).setChecked(false);
+((CheckBox) findViewById(R.id.RmiddleLeft)).setChecked(false);
+((CheckBox) findViewById(R.id.RBottoml)).setChecked(false);
+ ((CheckBox) findViewById(R.id.RTopright)).setChecked(false);
+((CheckBox) findViewById(R.id.RmiddleRight)).setChecked(false);
+((CheckBox) findViewById(R.id.RBottomRight)).setChecked(false);
+((CheckBox) findViewById(R.id.RTopleft1)).setChecked(false);
+((CheckBox) findViewById(R.id.Rmiddleleft1)).setChecked(false);
+((CheckBox) findViewById(R.id.RBottomleft1)).setChecked(false);
+((CheckBox) findViewById(R.id.RTopright1)).setChecked(false);
+ ((CheckBox) findViewById(R.id.RmiddleRight1)).setChecked(false);
+((CheckBox) findViewById(R.id.RBottomRight1)).setChecked(false);
+        ((CheckBox) findViewById(R.id.CLB)).setChecked(false);
+        ((CheckBox) findViewById(R.id.CLH)).setChecked(false);
+        ((CheckBox) findViewById(R.id.LB)).setChecked(false);
+        ((CheckBox) findViewById(R.id.LH)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RLB)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RLH)).setChecked(false);
+        ((CheckBox) findViewById(R.id.FLB)).setChecked(false);
+        ((CheckBox) findViewById(R.id.FLH)).setChecked(false);
+        ((CheckBox) findViewById(R.id.LH)).setChecked(false);
+        ((TextView)findViewById(R.id.tn)).setText("0");
+        ((TextView)findViewById(R.id.Mn)).setText("0");
+        ((TextView)findViewById(R.id.Bn)).setText("0");
+        ((TextView)findViewById(R.id.tnr)).setText("0");
+        ((TextView)findViewById(R.id.nmr)).setText("0");
+        ((TextView)findViewById(R.id.BNr)).setText("0");
+
+        ((CheckBox)findViewById(R.id.FRH)).setChecked(false);
+        ((CheckBox)findViewById(R.id.FRB)).setChecked(false);
+        ((CheckBox)findViewById(R.id.RRB)).setChecked(false);
+        ((CheckBox)findViewById(R.id.RRH)).setChecked(false);
+        ((CheckBox)findViewById(R.id.CRB)).setChecked(false);
+        ((CheckBox)findViewById(R.id.CRH)).setChecked(false);
+        ((CheckBox)findViewById(R.id.LRB)).setChecked(false);
+        ((CheckBox)findViewById(R.id.LRH)).setChecked(false);
+
+
+
+
+        ((Spinner) findViewById(R.id.wlt)).setSelection(0);
+
     }
+
     private int getIntValue(int id, String name) {
-        String textValue = "" + ((TextView)findViewById(id)).getText();
+        String textValue = "" + ((TextView) findViewById(id)).getText();
         try {
             return Integer.parseInt(textValue);
         } catch (NumberFormatException n) {
