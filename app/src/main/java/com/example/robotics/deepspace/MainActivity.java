@@ -2,17 +2,13 @@ package com.example.robotics.deepspace;
 
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageButton;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,22 +34,125 @@ public class MainActivity extends AppCompatActivity {
     Button BtnBP;
     Button BtnBPr;
     Button BtnBNr;
-    AppCompatImageButton S1;
+    Button StandStorm;
+    Button Teleop;
+    boolean inTeleop = false;
+    ImageButton S1;
+    TextView sandBallA;
+    TextView sandHatchA;
+
+    CheckBox RTopleft;
+    CheckBox RTopleft1;
+    CheckBox RTopright;
+    CheckBox RTopright1;
+    CheckBox RmiddleLeft;
+    CheckBox RmiddleLeft1;
+    CheckBox RmiddleRight;
+    CheckBox RmiddleRight1;
+    CheckBox RBottoml;
+    CheckBox RBottomRight;
+    CheckBox RBottomleft1;
+    CheckBox RBottomRight1;
+    CheckBox LH;
+    CheckBox CLH;
+    CheckBox RLH;
+    CheckBox FLH;
+    CheckBox LRH;
+    CheckBox CRH;
+    CheckBox RRH;
+    CheckBox FRH;
+    CheckBox LB;
+    CheckBox CLB;
+    CheckBox RLB;
+    CheckBox FLB;
+    CheckBox LRB;
+    CheckBox CRB;
+    CheckBox RRB;
+    CheckBox FRB;
 
 
     Intent mServiceIntent = null;
 
     int tn = 0;
+    //int sandBallA = 0;
     int tnr = 0;
     int mn = 0;
     int nmr = 0;
     int BNr = 0;
     int Bn = 0;
+    int sandstormscore = 0;
+    int hatchScore = 0;
+    int teleopscore = 0;
     int teamNumber = 0;
     String ScouterName = "";
     int finalScore = 0;
     String matchNumber = "";
     TextView txtCount;
+
+    public void setSandstormScore(int score) {
+        sandBallA.setText("" + score);
+    }
+
+    public void setHatchScore(int score) {
+        sandHatchA.setText("" + score);
+    }
+
+    int increaseShipBallScore(int id) {
+        TextView txtCount = findViewById(id);
+        String countValue = txtCount.getText().toString();
+        int intCountValue = Integer.parseInt(countValue);
+        int oldValue = intCountValue;
+        intCountValue = Math.min(intCountValue - 0, 1);
+        intCountValue++;
+        txtCount.setText(String.valueOf(intCountValue));
+        if (oldValue != intCountValue) {
+            if (inTeleop) {
+                // we are in telleop
+                teleopscore += (intCountValue - oldValue);
+            } else {
+                // we are in Sandstorm
+                sandstormscore += (intCountValue - oldValue);
+                setSandstormScore(sandstormscore);
+            }
+        }
+        return intCountValue;
+    }
+
+    int decreaseShipBallScore(int id) {
+        TextView txtCount = findViewById(id);
+        String countValue = txtCount.getText().toString();
+        int intCountValue = Integer.parseInt(countValue);
+        int oldValue = intCountValue;
+        intCountValue = Math.max(intCountValue - 1, 0);
+        txtCount.setText(String.valueOf(intCountValue));
+        if (oldValue != intCountValue) {
+            if (inTeleop) {
+                teleopscore += (intCountValue - oldValue);
+            } else {
+                sandstormscore += (intCountValue - oldValue);
+                setSandstormScore(sandstormscore);
+            }
+        }
+        return intCountValue;
+    }
+
+    void handleCheckboxChange(boolean isChecked) {
+        if (inTeleop) {
+            teleopscore += isChecked ? 1 : -1;
+        } else {
+            hatchScore += isChecked ? 1 : -1;
+            setHatchScore(hatchScore);
+        }
+    }
+
+    void handleBallCheckboxChange(boolean isChecked) {
+        if (inTeleop) {
+            teleopscore += isChecked ? 1 : -1;
+        } else {
+            sandstormscore += isChecked ? 1 : -1;
+            setSandstormScore(sandstormscore);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,98 +170,272 @@ public class MainActivity extends AppCompatActivity {
         BtnBN = findViewById(R.id.BtnBN);
         BtnBNr = findViewById(R.id.BtnBNr);
         BtnBPr = findViewById(R.id.BtnBPr);
+        StandStorm = findViewById(R.id.StandStorm);
+        Teleop = findViewById(R.id.Teleop);
+        sandBallA = findViewById(R.id.sandBallA);
+        sandHatchA = findViewById(R.id.sandHatchA);
+        RTopleft = findViewById(R.id.RTopleft);
+        RTopleft1 = findViewById(R.id.RTopleft1);
+        RTopright = findViewById(R.id.RTopright);
+        RTopright1 = findViewById(R.id.RTopright1);
+        RmiddleRight = findViewById(R.id.RmiddleRight);
+        RmiddleRight1 = findViewById(R.id.RmiddleRight1);
+        RmiddleLeft1 = findViewById(R.id.Rmiddleleft1);
+        RmiddleLeft = findViewById(R.id.RmiddleLeft);
+
+        RBottoml = findViewById(R.id.RBottoml);
+        RBottomRight = findViewById(R.id.RBottomRight);
+        RBottomleft1 = findViewById(R.id.RBottomleft1);
+        RBottomRight1 = findViewById(R.id.RBottomRight1);
+        LH = findViewById(R.id.LH);
+        CLH = findViewById(R.id.CLH);
+        RLH = findViewById(R.id.RLH);
+        FLH = findViewById(R.id.FLH);
+        LRH = findViewById(R.id.LRH);
+        CRH = findViewById(R.id.CRH);
+        RRH = findViewById(R.id.RRH);
+        FRH = findViewById(R.id.FRH);
+        LB = findViewById(R.id.LB);
+        CLB = findViewById(R.id.CLB);
+        RLB = findViewById(R.id.RLB);
+        FLB = findViewById(R.id.FLB);
+        RRB = findViewById(R.id.RRB);
+        CRB = findViewById(R.id.CRB);
+        LRB = findViewById(R.id.LRB);
+        FRB = findViewById(R.id.FRB);
+
+        RTopleft.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        RTopleft1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        RTopright.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        RTopright1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        RmiddleRight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        RmiddleRight1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        RmiddleLeft1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        RmiddleLeft.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        RBottoml.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        RBottomRight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        RBottomleft1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        RBottomRight1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        LH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        CLH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        RLH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        FLH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        LRH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        CRH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        RRH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        FRH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleCheckboxChange(isChecked);
+            }
+        });
+        LB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleBallCheckboxChange(isChecked);
+            }
+        });
+        CLB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleBallCheckboxChange(isChecked);
+            }
+        });
+        RLB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleBallCheckboxChange(isChecked);
+            }
+        });
+        FLB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleBallCheckboxChange(isChecked);
+            }
+        });
+        LRB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleBallCheckboxChange(isChecked);
+            }
+        });
+        CRB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleBallCheckboxChange(isChecked);
+            }
+        });
+        RRB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleBallCheckboxChange(isChecked);
+            }
+        });
+        FRB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleBallCheckboxChange(isChecked);
+            }
+        });
+
+
+
+        StandStorm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inTeleop = false;
+            }
+        });
+
+        Teleop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inTeleop = true;
+            }
+        });
+
         S1 = findViewById(R.id.s1);
         BtnTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtCount = findViewById(R.id.tn);
-                String countValue = txtCount.getText().toString();
-                int intCountValue = Integer.parseInt(countValue);
-                intCountValue = Math.min(intCountValue - 0, 1);
-                intCountValue++;
-                tn = intCountValue;
-                txtCount.setText(String.valueOf(intCountValue));
+                tn = increaseShipBallScore(R.id.tn);
             }
-
         });
         BtnTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtCount = findViewById(R.id.tn);
-                String countValue = txtCount.getText().toString();
-                int intCountValue = Integer.parseInt(countValue);
-                intCountValue = Math.max(intCountValue - 1, 0);
-                tn = intCountValue;
-                txtCount.setText(String.valueOf(intCountValue));
+                tn = decreaseShipBallScore(R.id.tn);
             }
         });
         BtnTnr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtCount = findViewById(R.id.tnr);
-                String countValue = txtCount.getText().toString();
-                int intCountValue = Integer.parseInt(countValue);
-                intCountValue = Math.max(intCountValue - 1, 0);
-                tnr = intCountValue;
-                txtCount.setText(String.valueOf(intCountValue));
+                tnr = decreaseShipBallScore(R.id.tnr);
             }
         });
         btnTPr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtCount = findViewById(R.id.tnr);
-                String countValue = txtCount.getText().toString();
-                int intCountValue = Integer.parseInt(countValue);
-                intCountValue = Math.min(intCountValue - 0, 1);
-                intCountValue++;
-                tnr = intCountValue;
-                txtCount.setText(String.valueOf(intCountValue));
+                tnr = increaseShipBallScore(R.id.tnr);
             }
         });
         BtnMP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtCount = findViewById(R.id.Mn);
-                String countValue = txtCount.getText().toString();
-                int intCountValue = Integer.parseInt(countValue);
-                intCountValue = Math.min(intCountValue - 0, 1);
-                intCountValue++;
-                mn = intCountValue;
-                txtCount.setText(String.valueOf(intCountValue));
+                mn = increaseShipBallScore(R.id.Mn);
             }
         });
         BtnMN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtCount = findViewById(R.id.Mn);
-                String countValue = txtCount.getText().toString();
-                int intCountValue = Integer.parseInt(countValue);
-                intCountValue = Math.max(intCountValue - 1, 0);
-                mn = intCountValue;
-                txtCount.setText(String.valueOf(intCountValue));
+                mn = decreaseShipBallScore(R.id.Mn);
             }
         });
         BtnMNr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtCount = findViewById(R.id.nmr);
-                String countValue = txtCount.getText().toString();
-                int intCountValue = Integer.parseInt(countValue);
-                intCountValue = Math.max(intCountValue - 1, 0);
-                nmr = intCountValue;
-                txtCount.setText(String.valueOf(intCountValue));
+                nmr = decreaseShipBallScore(R.id.nmr);
             }
         });
         BtnMPr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtCount = findViewById(R.id.nmr);
-                String countValue = txtCount.getText().toString();
-                int intCountValue = Integer.parseInt(countValue);
-                intCountValue = Math.min(intCountValue - 0, 1);
-                intCountValue++;
-                nmr = intCountValue;
-                txtCount.setText(String.valueOf(intCountValue));
+                nmr = increaseShipBallScore(R.id.nmr);
             }
 
 
@@ -170,49 +443,25 @@ public class MainActivity extends AppCompatActivity {
         BtnBP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtCount = findViewById(R.id.Bn);
-                String countValue = txtCount.getText().toString();
-                int intCountValue = Integer.parseInt(countValue);
-                intCountValue = Math.min(intCountValue - 0, 1);
-                intCountValue++;
-                nmr = intCountValue;
-                txtCount.setText(String.valueOf(intCountValue));
+                Bn = increaseShipBallScore(R.id.Bn);
             }
         });
         BtnBN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtCount = findViewById(R.id.Bn);
-                String countValue = txtCount.getText().toString();
-                int intCountValue = Integer.parseInt(countValue);
-                intCountValue = Math.max(intCountValue - 1, 0);
-                Bn = intCountValue;
-                txtCount.setText(String.valueOf(intCountValue));
+                Bn = decreaseShipBallScore(R.id.Bn);
             }
-
         });
         BtnBNr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtCount = findViewById(R.id.BNr);
-                String countValue = txtCount.getText().toString();
-                int intCountValue = Integer.parseInt(countValue);
-                intCountValue = Math.max(intCountValue - 1, 0);
-                BNr = intCountValue;
-                txtCount.setText(String.valueOf(intCountValue));
+                BNr = decreaseShipBallScore(R.id.BNr);
             }
         });
         BtnBPr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtCount = findViewById(R.id.BNr);
-                String countValue = txtCount.getText().toString();
-                int intCountValue = Integer.parseInt(countValue);
-                intCountValue = Math.min(intCountValue - 0, 1);
-                intCountValue++;
-                BNr = intCountValue;
-                txtCount.setText(String.valueOf(intCountValue));
-
+                BNr = increaseShipBallScore(R.id.BNr);
             }
         });
         S1.setOnClickListener(new View.OnClickListener() {
@@ -259,17 +508,17 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.finalScore)).setText("");
         ((TextView) findViewById(R.id.notes)).setText("");
         ((CheckBox) findViewById(R.id.RTopleft)).setChecked(false);
-((CheckBox) findViewById(R.id.RmiddleLeft)).setChecked(false);
-((CheckBox) findViewById(R.id.RBottoml)).setChecked(false);
- ((CheckBox) findViewById(R.id.RTopright)).setChecked(false);
-((CheckBox) findViewById(R.id.RmiddleRight)).setChecked(false);
-((CheckBox) findViewById(R.id.RBottomRight)).setChecked(false);
-((CheckBox) findViewById(R.id.RTopleft1)).setChecked(false);
-((CheckBox) findViewById(R.id.Rmiddleleft1)).setChecked(false);
-((CheckBox) findViewById(R.id.RBottomleft1)).setChecked(false);
-((CheckBox) findViewById(R.id.RTopright1)).setChecked(false);
- ((CheckBox) findViewById(R.id.RmiddleRight1)).setChecked(false);
-((CheckBox) findViewById(R.id.RBottomRight1)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RmiddleLeft)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RBottoml)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RTopright)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RmiddleRight)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RBottomRight)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RTopleft1)).setChecked(false);
+        ((CheckBox) findViewById(R.id.Rmiddleleft1)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RBottomleft1)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RTopright1)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RmiddleRight1)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RBottomRight1)).setChecked(false);
         ((CheckBox) findViewById(R.id.CLB)).setChecked(false);
         ((CheckBox) findViewById(R.id.CLH)).setChecked(false);
         ((CheckBox) findViewById(R.id.LB)).setChecked(false);
@@ -279,26 +528,26 @@ public class MainActivity extends AppCompatActivity {
         ((CheckBox) findViewById(R.id.FLB)).setChecked(false);
         ((CheckBox) findViewById(R.id.FLH)).setChecked(false);
         ((CheckBox) findViewById(R.id.LH)).setChecked(false);
-        ((TextView)findViewById(R.id.tn)).setText("0");
-        ((TextView)findViewById(R.id.Mn)).setText("0");
-        ((TextView)findViewById(R.id.Bn)).setText("0");
-        ((TextView)findViewById(R.id.tnr)).setText("0");
-        ((TextView)findViewById(R.id.nmr)).setText("0");
-        ((TextView)findViewById(R.id.BNr)).setText("0");
+        ((TextView) findViewById(R.id.tn)).setText("0");
+        ((TextView) findViewById(R.id.Mn)).setText("0");
+        ((TextView) findViewById(R.id.Bn)).setText("0");
+        ((TextView) findViewById(R.id.tnr)).setText("0");
+        ((TextView) findViewById(R.id.nmr)).setText("0");
+        ((TextView) findViewById(R.id.BNr)).setText("0");
 
-        ((CheckBox)findViewById(R.id.FRH)).setChecked(false);
-        ((CheckBox)findViewById(R.id.FRB)).setChecked(false);
-        ((CheckBox)findViewById(R.id.RRB)).setChecked(false);
-        ((CheckBox)findViewById(R.id.RRH)).setChecked(false);
-        ((CheckBox)findViewById(R.id.CRB)).setChecked(false);
-        ((CheckBox)findViewById(R.id.CRH)).setChecked(false);
-        ((CheckBox)findViewById(R.id.LRB)).setChecked(false);
-        ((CheckBox)findViewById(R.id.LRH)).setChecked(false);
-
-
+        ((CheckBox) findViewById(R.id.FRH)).setChecked(false);
+        ((CheckBox) findViewById(R.id.FRB)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RRB)).setChecked(false);
+        ((CheckBox) findViewById(R.id.RRH)).setChecked(false);
+        ((CheckBox) findViewById(R.id.CRB)).setChecked(false);
+        ((CheckBox) findViewById(R.id.CRH)).setChecked(false);
+        ((CheckBox) findViewById(R.id.LRB)).setChecked(false);
+        ((CheckBox) findViewById(R.id.LRH)).setChecked(false);
 
 
         ((Spinner) findViewById(R.id.wlt)).setSelection(0);
+        sandstormscore = 0;
+        setSandstormScore(0);
 
     }
 

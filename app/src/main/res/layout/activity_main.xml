@@ -12,6 +12,7 @@
         android:id="@+id/RLH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/Right"
         app:layout_constraintEnd_toEndOf="@+id/RBottoml"
         app:layout_constraintStart_toStartOf="@+id/RBottoml" />
@@ -20,6 +21,7 @@
         android:id="@+id/CLH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/Center"
         app:layout_constraintEnd_toEndOf="@+id/RBottoml"
         app:layout_constraintStart_toStartOf="@+id/RBottoml" />
@@ -221,8 +223,9 @@
         app:layout_constraintStart_toStartOf="@+id/matchNumber"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <Button
         android:id="@+id/StandStorm"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -255,6 +258,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBottom_toBottomOf="@+id/t_rocket"
         app:layout_constraintStart_toEndOf="@+id/t_rocket"
         app:layout_constraintTop_toTopOf="@+id/t_rocket" />
@@ -263,6 +267,7 @@
         android:id="@+id/RTopright"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/RTopleft"
         app:layout_constraintStart_toEndOf="@+id/BtnTN" />
 
@@ -271,6 +276,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBottom_toBottomOf="@+id/RTopright"
         app:layout_constraintStart_toEndOf="@+id/RTopright"
         app:layout_constraintTop_toTopOf="@+id/RTopright" />
@@ -279,6 +285,7 @@
         android:id="@+id/RTopright1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBottom_toBottomOf="@+id/RTopleft1"
         app:layout_constraintStart_toEndOf="@+id/BtnTnr"
         app:layout_constraintTop_toTopOf="@+id/RTopleft1" />
@@ -288,6 +295,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/RmiddleRight"
         app:layout_constraintStart_toEndOf="@+id/RmiddleRight" />
 
@@ -297,6 +305,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBottom_toBottomOf="@+id/m_rocket"
         app:layout_constraintStart_toEndOf="@+id/m_rocket"
         app:layout_constraintTop_toTopOf="@+id/m_rocket" />
@@ -307,6 +316,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/Rmiddleleft1"
         app:layout_constraintEnd_toEndOf="@+id/RTopright1"
         app:layout_constraintStart_toEndOf="@+id/BtnTnr" />
@@ -317,6 +327,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/RmiddleLeft"
         app:layout_constraintEnd_toEndOf="@+id/RTopright"
         app:layout_constraintStart_toEndOf="@+id/BtnTN" />
@@ -326,6 +337,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBottom_toBottomOf="@+id/b_rocket"
         app:layout_constraintStart_toEndOf="@+id/b_rocket"
         app:layout_constraintTop_toTopOf="@+id/b_rocket" />
@@ -334,6 +346,7 @@
         android:id="@+id/RBottomRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/RBottoml"
         app:layout_constraintEnd_toEndOf="@+id/RmiddleRight"
         app:layout_constraintStart_toStartOf="@+id/RmiddleRight" />
@@ -343,6 +356,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/RBottomRight"
         app:layout_constraintStart_toEndOf="@+id/RBottomRight" />
 
@@ -350,6 +364,7 @@
         android:id="@+id/RBottomRight1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/RBottomleft1"
         app:layout_constraintEnd_toEndOf="@+id/RmiddleRight1"
         app:layout_constraintHorizontal_bias="0.0"
@@ -425,14 +440,15 @@
 
     <ImageButton
         android:id="@+id/s1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/img_buttons"
         app:layout_constraintEnd_toEndOf="@+id/finalScore"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/finalScore"
         app:layout_constraintTop_toBottomOf="@+id/finalScore"
-        app:srcCompat="@android:drawable/ic_menu_save" />
+        tools:src="@android:drawable/ic_menu_save" />
 
     <Button
         android:id="@+id/BtnMP"
@@ -584,6 +600,7 @@
         style="@style/Widget.AppCompat.CompoundButton.CheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:button="@drawable/custom_chk"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBaseline_toBaselineOf="@+id/Left"
         app:layout_constraintEnd_toEndOf="@+id/RBottoml"
@@ -593,6 +610,7 @@
         android:id="@+id/FLH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/front"
         app:layout_constraintEnd_toEndOf="@+id/RBottoml"
         app:layout_constraintStart_toStartOf="@+id/RBottoml" />
@@ -601,6 +619,7 @@
         android:id="@+id/LRH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/LB"
         app:layout_constraintEnd_toEndOf="@+id/RBottomleft1"
         app:layout_constraintStart_toStartOf="@+id/RBottomleft1" />
@@ -609,6 +628,7 @@
         android:id="@+id/CRH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/CLB"
         app:layout_constraintEnd_toEndOf="@+id/RBottomleft1"
         app:layout_constraintStart_toStartOf="@+id/RBottomleft1" />
@@ -617,6 +637,7 @@
         android:id="@+id/FRH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/FLB"
         app:layout_constraintEnd_toEndOf="@+id/RBottomleft1"
         app:layout_constraintStart_toStartOf="@+id/RBottomleft1" />
@@ -626,6 +647,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/RLB"
         app:layout_constraintEnd_toEndOf="@+id/RBottomleft1"
         app:layout_constraintStart_toStartOf="@+id/RBottomleft1" />
@@ -640,8 +662,8 @@
 
     <CheckBox
         android:id="@+id/LRB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/LRH"
         app:layout_constraintEnd_toEndOf="@+id/BNr"
         app:layout_constraintStart_toStartOf="@+id/BNr" />
@@ -695,5 +717,41 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/RLH"
         app:layout_constraintEnd_toEndOf="@+id/Bn"
         app:layout_constraintStart_toStartOf="@+id/Bn" />
+
+    <TextView
+        android:id="@+id/sandBallA"
+        android:layout_width="49dp"
+        android:layout_height="45dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="213dp"
+        tools:layout_editor_absoluteY="208dp" />
+
+    <Button
+        android:id="@+id/Teleop"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
+        android:text="TELE-OP"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/SHatch"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SBall" />
+
+    <TextView
+        android:id="@+id/sandHatchA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@+id/sandBallA"
+        app:layout_constraintStart_toEndOf="@+id/sandBallA"
+        app:layout_constraintTop_toTopOf="@+id/sandBallA" />
 
 </android.support.constraint.ConstraintLayout>
