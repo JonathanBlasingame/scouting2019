@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#040404</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF0004</color>
+    <color name="teleop">#0000FF</color>
+    <color name="sandstorm">#FFFF00</color>
 </resources>

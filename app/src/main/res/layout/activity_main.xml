@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="25dp">
 
@@ -45,7 +46,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
         android:text="Red Alliance"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toStartOf="@+id/blueAlliance"
         app:layout_constraintStart_toEndOf="@+id/teamNumber"
         app:layout_constraintTop_toTopOf="parent" />
@@ -77,14 +78,17 @@
         android:id="@+id/svision"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="vision"
-        app:layout_constraintEnd_toStartOf="@+id/sauto"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        app:layout_constraintBottom_toTopOf="@+id/sandHatchA"
+        app:layout_constraintStart_toEndOf="@+id/sandBallA"
+        app:layout_constraintTop_toTopOf="@+id/sandBallA" />
 
     <Button
         android:id="@+id/m_rocket"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -93,6 +97,7 @@
 
     <Button
         android:id="@+id/b_rocket"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -102,6 +107,7 @@
 
     <Button
         android:id="@+id/t_rocket"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="308dp"
@@ -124,12 +130,60 @@
         android:id="@+id/sauto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
         android:text="auto"
-        app:layout_constraintBottom_toBottomOf="@+id/svision"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/sandHatchA"
+        app:layout_constraintEnd_toEndOf="@+id/svision"
+        app:layout_constraintStart_toStartOf="@+id/svision"
+        app:layout_constraintTop_toTopOf="@+id/sandHatchA" />
+
+    <CheckBox
+        android:id="@+id/ci"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Communication issues?"
+        app:layout_constraintBottom_toBottomOf="@+id/sauto"
+        app:layout_constraintEnd_toEndOf="@+id/dbbp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dbbp"
+        app:layout_constraintTop_toBottomOf="@+id/dbbp" />
+
+    <CheckBox
+        android:id="@+id/dbbp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Dropped Battery/Bumpers/Parts?"
+        android:textAlignment="viewStart"
+        app:layout_constraintBottom_toTopOf="@+id/sauto"
+        app:layout_constraintStart_toEndOf="@+id/svision"
+        app:layout_constraintTop_toTopOf="@+id/svision" />
+
+    <CheckBox
+        android:id="@+id/bd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Broke Down?"
+        app:layout_constraintBottom_toBottomOf="@+id/sauto"
+        app:layout_constraintEnd_toEndOf="@+id/ci"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ci"
+        app:layout_constraintTop_toBottomOf="@+id/ci"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <CheckBox
+        android:id="@+id/fo"
+        android:layout_width="wrap_content"
+        android:layout_height="59dp"
+        android:layout_marginStart="24dp"
+        android:text="Fell Over?"
+        app:layout_constraintBottom_toBottomOf="@+id/ci"
+        app:layout_constraintStart_toEndOf="@+id/ci"
+        app:layout_constraintTop_toTopOf="@+id/ci" />
 
     <TextView
         android:id="@+id/Left"
@@ -198,48 +252,18 @@
         app:layout_constraintTop_toTopOf="@+id/finalScore" />
 
     <Button
-        android:id="@+id/SBall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Cargo"
-        app:layout_constraintBottom_toBottomOf="@+id/SHatch"
-        app:layout_constraintEnd_toEndOf="@+id/matchNumber"
-        app:layout_constraintHorizontal_bias="0.036"
-        app:layout_constraintStart_toStartOf="@+id/ScouterName"
-        app:layout_constraintTop_toTopOf="@+id/SHatch"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/SHatch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="176dp"
-        android:layout_marginEnd="8dp"
-        android:text="Hatch"
-        app:layout_constraintEnd_toEndOf="@+id/teamNumber"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="@+id/matchNumber"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/StandStorm"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:text="SandStorm"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/SBall"
-        app:layout_constraintEnd_toEndOf="@+id/SHatch"
+        app:layout_constraintEnd_toEndOf="@+id/teamNumber"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/SBall"
-        app:layout_constraintTop_toBottomOf="@+id/matchNumber"
-        app:layout_constraintVertical_bias="0.312" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchNumber" />
 
     <Spinner
         android:id="@+id/wlt"
@@ -722,11 +746,13 @@
         android:id="@+id/sandBallA"
         android:layout_width="49dp"
         android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="0"
         android:textAlignment="center"
         android:textSize="50sp"
-        tools:layout_editor_absoluteX="213dp"
-        tools:layout_editor_absoluteY="208dp" />
+        app:layout_constraintStart_toStartOf="@+id/StandStorm"
+        app:layout_constraintTop_toBottomOf="@+id/StandStorm" />
 
     <Button
         android:id="@+id/Teleop"
@@ -734,24 +760,62 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="Teleop"
         android:text="TELE-OP"
         android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="@+id/SHatch"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SBall" />
+        app:layout_constraintBottom_toTopOf="@+id/t_rocket"
+        app:layout_constraintEnd_toEndOf="@+id/StandStorm"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="@+id/t_rocket"
+        app:layout_constraintTop_toBottomOf="@+id/StandStorm" />
 
     <TextView
         android:id="@+id/sandHatchA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_width="49dp"
+        android:layout_height="45dp"
         android:text="0"
+        android:textAlignment="center"
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="@+id/sandBallA"
-        app:layout_constraintStart_toEndOf="@+id/sandBallA"
-        app:layout_constraintTop_toTopOf="@+id/sandBallA" />
+        app:layout_constraintEnd_toEndOf="@+id/sandBallA"
+        app:layout_constraintStart_toStartOf="@+id/sandBallA"
+        app:layout_constraintTop_toBottomOf="@+id/sandBallA" />
+
+    <Spinner
+        android:id="@+id/speed"
+        android:layout_width="112dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:entries="@array/speedValues"
+        app:layout_constraintBaseline_toBaselineOf="@+id/bd"
+        app:layout_constraintEnd_toEndOf="@+id/fo"
+        app:layout_constraintStart_toEndOf="@+id/bd" />
+
+
+    <ImageSwitcher
+        android:id="@+id/imageSwitcher1"
+        android:layout_width="109dp"
+        android:layout_height="65dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:layout_constraintBottom_toBottomOf="@+id/Teleop"
+        app:layout_constraintStart_toEndOf="@+id/Teleop"
+        app:layout_constraintTop_toBottomOf="@+id/sauto"
+        app:layout_constraintVertical_bias="0.00999999"></ImageSwitcher>
+
+    <ImageSwitcher
+        android:id="@+id/imageSwitcher2"
+        android:layout_width="109dp"
+        android:layout_height="65dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/StandStorm"
+        app:layout_constraintStart_toEndOf="@+id/StandStorm"
+        app:layout_constraintTop_toTopOf="@+id/StandStorm"></ImageSwitcher>
+
 
 </android.support.constraint.ConstraintLayout>

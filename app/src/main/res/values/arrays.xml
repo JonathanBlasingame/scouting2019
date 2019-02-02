@@ -6,4 +6,10 @@
         <item>Lose</item>
         <item>Tie</item>
     </string-array>
+    <string-array name="speedValues">
+        <item>Speed</item>
+        <item>Slow</item>
+        <item>Advarage</item>
+        <item>Fast</item>
+    </string-array>
 </resources>

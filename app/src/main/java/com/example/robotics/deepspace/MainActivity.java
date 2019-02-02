@@ -1,5 +1,7 @@
 package com.example.robotics.deepspace;
 
+import android.app.ActionBar;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +11,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.widget.ImageSwitcher;
+import android.widget.ViewSwitcher;
+import android.graphics.Color;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,6 +28,8 @@ import java.io.PrintWriter;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
+    private ImageSwitcher sw;
+    private ImageSwitcher sw1;
     Button BtnTP;
     Button BtnTN;
     Button BtnTnr;
@@ -36,8 +44,14 @@ public class MainActivity extends AppCompatActivity {
     Button BtnBNr;
     Button StandStorm;
     Button Teleop;
-    boolean inTeleop = false;
+    Button svision;
+    Button sauto;
+    boolean inTeleop;
+    boolean color = false;
+    boolean inTeleopColor;
     ImageButton S1;
+    ImageView Timage;
+
     TextView sandBallA;
     TextView sandHatchA;
 
@@ -69,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     CheckBox CRB;
     CheckBox RRB;
     CheckBox FRB;
+    CheckBox Teleop_in;
 
 
     Intent mServiceIntent = null;
@@ -172,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
         BtnBPr = findViewById(R.id.BtnBPr);
         StandStorm = findViewById(R.id.StandStorm);
         Teleop = findViewById(R.id.Teleop);
+        Teleop = findViewById(R.id.Teleop);
         sandBallA = findViewById(R.id.sandBallA);
         sandHatchA = findViewById(R.id.sandHatchA);
         RTopleft = findViewById(R.id.RTopleft);
@@ -182,6 +198,10 @@ public class MainActivity extends AppCompatActivity {
         RmiddleRight1 = findViewById(R.id.RmiddleRight1);
         RmiddleLeft1 = findViewById(R.id.Rmiddleleft1);
         RmiddleLeft = findViewById(R.id.RmiddleLeft);
+        svision = findViewById(R.id.svision);
+        sauto = findViewById(R.id.sauto);
+        sw = (ImageSwitcher) findViewById(R.id.imageSwitcher1);
+        sw1 = (ImageSwitcher) findViewById(R.id.imageSwitcher2);
 
         RBottoml = findViewById(R.id.RBottoml);
         RBottomRight = findViewById(R.id.RBottomRight);
@@ -204,7 +224,65 @@ public class MainActivity extends AppCompatActivity {
         LRB = findViewById(R.id.LRB);
         FRB = findViewById(R.id.FRB);
 
-        RTopleft.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        ((CheckBox)findViewById(R.id.blueAlliance)).setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    findViewById(R.id.main).setBackgroundColor(Color.rgb(100,149,237));
+                }
+            }
+        });
+        ((CheckBox)findViewById(R.id.RedAlliance)).setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    findViewById(R.id.main).setBackgroundColor(Color.rgb(220,20,60));
+                }
+            }
+        });
+
+        inTeleop = false;
+        inTeleopColor = false;
+
+
+        StandStorm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+        sw.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                ImageView myView = new ImageView(getApplicationContext());
+                myView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                myView.setLayoutParams(new
+                        ImageSwitcher.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT,
+                        ActionBar.LayoutParams.WRAP_CONTENT));
+                return myView;
+            }
+        });
+        sw1.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                ImageView myView = new ImageView(getApplicationContext());
+                myView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                myView.setLayoutParams(new
+                        ImageSwitcher.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT,
+                        ActionBar.LayoutParams.WRAP_CONTENT));
+                return myView;
+            }
+        });
+        sw1.setImageResource(R.mipmap.g400);
+        Teleop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                }
+        });
+    RTopleft.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 handleCheckboxChange(isChecked);
@@ -379,6 +457,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 inTeleop = false;
+                sw1.setImageResource(R.mipmap.g383);
+                sw.setImageResource(R.mipmap.blank);
             }
         });
 
@@ -386,6 +466,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 inTeleop = true;
+                sw.setImageResource(R.mipmap.g383);
+                sw1.setImageResource(R.mipmap.blank);
             }
         });
 
@@ -458,10 +540,26 @@ public class MainActivity extends AppCompatActivity {
                 BNr = decreaseShipBallScore(R.id.BNr);
             }
         });
+        svision.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                svision.setTextColor(Color.MAGENTA);
+        }
+
+    });
+        sauto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sauto.setTextColor(Color.MAGENTA);
+            }
+
+        });
+
         BtnBPr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BNr = increaseShipBallScore(R.id.BNr);
+
             }
         });
         S1.setOnClickListener(new View.OnClickListener() {
@@ -528,6 +626,10 @@ public class MainActivity extends AppCompatActivity {
         ((CheckBox) findViewById(R.id.FLB)).setChecked(false);
         ((CheckBox) findViewById(R.id.FLH)).setChecked(false);
         ((CheckBox) findViewById(R.id.LH)).setChecked(false);
+        ((CheckBox) findViewById(R.id.dbbp)).setChecked(false);
+        ((CheckBox) findViewById(R.id.ci)).setChecked(false);
+        ((CheckBox) findViewById(R.id.bd)).setChecked(false);
+        ((CheckBox) findViewById(R.id.fo)).setChecked(false);
         ((TextView) findViewById(R.id.tn)).setText("0");
         ((TextView) findViewById(R.id.Mn)).setText("0");
         ((TextView) findViewById(R.id.Bn)).setText("0");
@@ -543,12 +645,13 @@ public class MainActivity extends AppCompatActivity {
         ((CheckBox) findViewById(R.id.CRH)).setChecked(false);
         ((CheckBox) findViewById(R.id.LRB)).setChecked(false);
         ((CheckBox) findViewById(R.id.LRH)).setChecked(false);
-
-
+        ((Button)   findViewById(R.id.svision)).setTextColor(Color.BLACK);
+        ((Button)   findViewById(R.id.sauto)).setTextColor(Color.BLACK);
         ((Spinner) findViewById(R.id.wlt)).setSelection(0);
+        ((Spinner) findViewById(R.id.speed)).setSelection(0);
         sandstormscore = 0;
         setSandstormScore(0);
-
+        sw1.setImageResource(R.mipmap.g383);
     }
 
     private int getIntValue(int id, String name) {
