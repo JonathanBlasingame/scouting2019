@@ -2,6 +2,7 @@ package com.example.robotics.deepspace;
 
 import android.app.ActionBar;
 import android.graphics.Color;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -574,7 +575,7 @@ public class MainActivity extends AppCompatActivity {
         S1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File dir = new File(""); //BluetoothServerService.getDataDirectory();
+                File dir = getDataDirectory();
                 ScouterName = ((TextView) findViewById(R.id.ScouterName)).getText().toString();
                 String notes = ((TextView) findViewById(R.id.notes)).getText().toString();
                 teamNumber = getIntValue(R.id.teamNumber, "Team Number");
@@ -672,6 +673,13 @@ public class MainActivity extends AppCompatActivity {
             return 0;
         }
 
+    }
+
+    private File getDataDirectory() {
+        File directory = Environment.getExternalStorageDirectory();
+        File myDir = new File(directory + "/ScoutingData");
+        myDir.mkdirs();
+        return myDir;
     }
 }
 
