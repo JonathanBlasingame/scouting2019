@@ -588,7 +588,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Toast toast = Toast.makeText(getApplicationContext(), "Saving", Toast.LENGTH_SHORT);
                 toast.show();
-                resetapp();
                 try {
 
                     Long myCurrentTimeMillis = System.currentTimeMillis();
@@ -601,7 +600,13 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("Timestamp: " + (new Date()).getTime());
                     myOutWriter.println("Competition: ");
                     myOutWriter.println("Match: " + match);
+                    myOutWriter.flush();
+                    myOutWriter.close();
+                    fOut.close();
 
+                    toast = Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT);
+                    toast.show();
+                    resetapp();
                 } catch (IOException e) {
                     toast = Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT);
                     Log.e("Exception", "File write failed: " + e.toString());
