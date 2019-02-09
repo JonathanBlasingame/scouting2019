@@ -20,6 +20,7 @@ import android.widget.ImageSwitcher;
 import android.widget.ViewSwitcher;
 import android.graphics.Color;
 
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -198,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
         RmiddleRight1 = findViewById(R.id.RmiddleRight1);
         RmiddleLeft1 = findViewById(R.id.Rmiddleleft1);
         RmiddleLeft = findViewById(R.id.RmiddleLeft);
+        ((TextView)findViewById(R.id.notes)).setText("");
         svision = findViewById(R.id.svision);
         sauto = findViewById(R.id.sauto);
         sw = (ImageSwitcher) findViewById(R.id.imageSwitcher1);
@@ -240,6 +242,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        sandBallA.setTextSize(20 * getResources().getDisplayMetrics().density);
+        sandHatchA.setTextSize(20 * getResources().getDisplayMetrics().density);
+        Teleop.setTextSize(14 * getResources().getDisplayMetrics().density);
+        StandStorm.setTextSize(14 * getResources().getDisplayMetrics().density);
+        BtnTP.setTextSize(14 * getResources().getDisplayMetrics().density);
+
 
         inTeleop = false;
         inTeleopColor = false;
