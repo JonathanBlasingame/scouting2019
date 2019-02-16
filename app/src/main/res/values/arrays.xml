@@ -12,4 +12,12 @@
         <item>Advarage</item>
         <item>Fast</item>
     </string-array>
+    <string-array name="StaringSpot">
+        <item>Staring Postion</item>
+        <item>Left level 1</item>
+        <item>Left level 2</item>
+        <item>Center level 1</item>
+        <item>Right level 1</item>
+        <item>Right level 2</item>
+    </string-array>
 </resources>

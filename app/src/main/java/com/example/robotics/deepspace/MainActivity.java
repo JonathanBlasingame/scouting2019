@@ -248,6 +248,10 @@ public class MainActivity extends AppCompatActivity {
         RedAlliance = findViewById(R.id.RedAlliance);
         BlueAlliance = findViewById(R.id.blueAlliance);
 
+        fo = findViewById(R.id.fo);
+        bd = findViewById(R.id.bd);
+        ci = findViewById(R.id.ci);
+        dbbp = findViewById(R.id.dbbp);
         ((CheckBox) findViewById(R.id.blueAlliance)).setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -637,7 +641,7 @@ public class MainActivity extends AppCompatActivity {
                 finalScore = getIntValue(R.id.finalScore, "Final Score");
                 int match = getIntValue(R.id.matchNumber, "Match Number");
 
-                if (ScouterName == null || ScouterName.length() == 0 || match == 0 || teamNumber == 0 || finalScore == 0) {
+                if (ScouterName == null || ScouterName.length() == 0 || match == 0 || teamNumber == 0 || finalScore == 0 || wlt.equalsIgnoreCase("Results")) {
                     Toast.makeText(getApplicationContext(), "Please complete the form before saving", Toast.LENGTH_LONG).show();
                     return;
                 }

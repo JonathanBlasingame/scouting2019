@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="25dp">
@@ -96,10 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="middle"
-        app:layout_constraintEnd_toEndOf="@+id/t_rocket"
         app:layout_constraintTop_toBottomOf="@+id/t_rocket" />
 
     <Button
@@ -108,10 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="bottom"
-        app:layout_constraintEnd_toEndOf="@+id/m_rocket"
         app:layout_constraintTop_toBottomOf="@+id/m_rocket" />
 
     <Button
@@ -290,9 +284,11 @@
         android:layout_width="102dp"
         android:layout_height="41dp"
         android:layout_marginStart="8dp"
-        android:background="@android:drawable/spinner_dropdown_background"
+        android:background="@android:drawable/spinner_background"
+        android:dropDownWidth="wrap_content"
         android:entries="@array/wltValues"
-        android:popupBackground="@android:drawable/spinner_dropdown_background"
+        android:popupBackground="@android:drawable/spinner_background"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="@+id/notes"
         app:layout_constraintEnd_toStartOf="@+id/notes"
         app:layout_constraintStart_toStartOf="parent"
@@ -813,9 +809,10 @@
         android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@android:drawable/spinner_dropdown_background"
+        android:background="@android:drawable/spinner_background"
         android:entries="@array/speedValues"
-        android:popupBackground="@android:drawable/spinner_dropdown_background"
+        android:popupBackground="@android:drawable/spinner_background"
+        android:spinnerMode="dropdown"
         app:layout_constraintBaseline_toBaselineOf="@+id/bd"
         app:layout_constraintEnd_toEndOf="@+id/fo"
         app:layout_constraintStart_toEndOf="@+id/bd" />
@@ -841,6 +838,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/StandStorm"
         app:layout_constraintStart_toEndOf="@+id/StandStorm"
         app:layout_constraintTop_toTopOf="@+id/StandStorm"></ImageSwitcher>
+
+    <Spinner
+        android:id="@+id/StartingP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:background="@android:drawable/spinner_background"
+        android:entries="@array/StaringSpot"
+        android:popupBackground="@android:drawable/spinner_background"
+        app:layout_constraintEnd_toEndOf="@+id/blueAlliance"
+        app:layout_constraintStart_toStartOf="@+id/RedAlliance"
+        app:layout_constraintTop_toTopOf="@+id/RedAlliance" />
 
 
 </android.support.constraint.ConstraintLayout>
