@@ -13,13 +13,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ImageSwitcher;
 import android.widget.ViewSwitcher;
-import android.graphics.Color;
 
 
 import java.io.File;
@@ -51,11 +49,17 @@ public class MainActivity extends AppCompatActivity {
     boolean inTeleop;
     boolean color = false;
     boolean inTeleopColor;
+    boolean SandButBackround = false;
     ImageButton S1;
     ImageView Timage;
 
     TextView sandBallA;
     TextView sandHatchA;
+    TextView Left;
+    TextView Center;
+    TextView Right;
+    TextView Front;
+
 
     CheckBox RTopleft;
     CheckBox RTopleft1;
@@ -81,11 +85,17 @@ public class MainActivity extends AppCompatActivity {
     CheckBox CLB;
     CheckBox RLB;
     CheckBox FLB;
-    CheckBox LRB;
+    CheckBox LRb;
     CheckBox CRB;
     CheckBox RRB;
     CheckBox FRB;
+    CheckBox dbbp;
+    CheckBox fo;
+    CheckBox bd;
+    CheckBox ci;
     CheckBox Teleop_in;
+    CheckBox RedAlliance;
+    CheckBox BlueAlliance;
 
 
     Intent mServiceIntent = null;
@@ -104,7 +114,10 @@ public class MainActivity extends AppCompatActivity {
     String ScouterName = "";
     int finalScore = 0;
     String matchNumber = "";
+    String wlt = "";
+    String speed = "";
     TextView txtCount;
+
 
     public void setSandstormScore(int score) {
         sandBallA.setText("" + score);
@@ -124,10 +137,10 @@ public class MainActivity extends AppCompatActivity {
         txtCount.setText(String.valueOf(intCountValue));
         if (oldValue != intCountValue) {
             if (inTeleop) {
-                // we are in telleop
+                /** we are in telleop */
                 teleopscore += (intCountValue - oldValue);
             } else {
-                // we are in Sandstorm
+                /** we are in Sandstorm */
                 sandstormscore += (intCountValue - oldValue);
                 setSandstormScore(sandstormscore);
             }
@@ -198,9 +211,15 @@ public class MainActivity extends AppCompatActivity {
         RTopright1 = findViewById(R.id.RTopright1);
         RmiddleRight = findViewById(R.id.RmiddleRight);
         RmiddleRight1 = findViewById(R.id.RmiddleRight1);
-        RmiddleLeft1 = findViewById(R.id.Rmiddleleft1);
         RmiddleLeft = findViewById(R.id.RmiddleLeft);
-        ((TextView)findViewById(R.id.notes)).setText("");
+        RmiddleLeft1 = findViewById(R.id.Rmiddleleft1);
+        Left = findViewById(R.id.Left);
+        Center = findViewById(R.id.Center);
+        Right = findViewById(R.id.Right);
+        Front = findViewById(R.id.Front);
+
+
+        ((TextView) findViewById(R.id.notes)).setText("");
         svision = findViewById(R.id.svision);
         sauto = findViewById(R.id.sauto);
         sw = (ImageSwitcher) findViewById(R.id.imageSwitcher1);
@@ -224,31 +243,59 @@ public class MainActivity extends AppCompatActivity {
         FLB = findViewById(R.id.FLB);
         RRB = findViewById(R.id.RRB);
         CRB = findViewById(R.id.CRB);
-        LRB = findViewById(R.id.LRB);
+        LRb = findViewById(R.id.LRB);
         FRB = findViewById(R.id.FRB);
+        RedAlliance = findViewById(R.id.RedAlliance);
+        BlueAlliance = findViewById(R.id.blueAlliance);
 
-        ((CheckBox)findViewById(R.id.blueAlliance)).setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+        ((CheckBox) findViewById(R.id.blueAlliance)).setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    findViewById(R.id.main).setBackgroundColor(Color.rgb(100,149,237));
+                    findViewById(R.id.main).setBackgroundColor(Color.rgb(100, 149, 237));
+                    ((CheckBox) findViewById(R.id.RedAlliance)).setChecked(false);
+                } else {
+                    if (((CheckBox) findViewById(R.id.RedAlliance)).isChecked() == false) {
+                        findViewById(R.id.main).setBackgroundColor(Color.rgb(255, 255, 255));
+                    }
                 }
             }
         });
-        ((CheckBox)findViewById(R.id.RedAlliance)).setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+        ((CheckBox) findViewById(R.id.RedAlliance)).setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    findViewById(R.id.main).setBackgroundColor(Color.rgb(220,20,60));
+                    findViewById(R.id.main).setBackgroundColor(Color.rgb(220, 20, 60));
+                    ((CheckBox) findViewById(R.id.blueAlliance)).setChecked(false);
+                } else {
+                    if (((CheckBox) findViewById(R.id.blueAlliance)).isChecked() == false) {
+                        findViewById(R.id.main).setBackgroundColor(Color.rgb(255, 255, 255));
+                    }
                 }
             }
         });
+
 
         sandBallA.setTextSize(20 * getResources().getDisplayMetrics().density);
         sandHatchA.setTextSize(20 * getResources().getDisplayMetrics().density);
         Teleop.setTextSize(14 * getResources().getDisplayMetrics().density);
         StandStorm.setTextSize(14 * getResources().getDisplayMetrics().density);
         BtnTP.setTextSize(14 * getResources().getDisplayMetrics().density);
+        BtnTN.setTextSize(14 * getResources().getDisplayMetrics().density);
+        BtnMP.setTextSize(14 * getResources().getDisplayMetrics().density);
+        BtnMN.setTextSize(14 * getResources().getDisplayMetrics().density);
+        BtnBP.setTextSize(14 * getResources().getDisplayMetrics().density);
+        BtnBN.setTextSize(14 * getResources().getDisplayMetrics().density);
+        BtnTnr.setTextSize(20 * getResources().getDisplayMetrics().density);
+        btnTPr.setTextSize(14 * getResources().getDisplayMetrics().density);
+        BtnMPr.setTextSize(14 * getResources().getDisplayMetrics().density);
+        BtnMNr.setTextSize(20 * getResources().getDisplayMetrics().density);
+        BtnBPr.setTextSize(14 * getResources().getDisplayMetrics().density);
+        BtnBNr.setTextSize(20 * getResources().getDisplayMetrics().density);
+        Left.setTextSize(20 * getResources().getDisplayMetrics().density);
+        Center.setTextSize(20 * getResources().getDisplayMetrics().density);
+        Right.setTextSize(20 * getResources().getDisplayMetrics().density);
+        Front.setTextSize(20 * getResources().getDisplayMetrics().density);
 
 
         inTeleop = false;
@@ -290,9 +337,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                }
+            }
         });
-    RTopleft.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        RTopleft.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 handleCheckboxChange(isChecked);
@@ -430,18 +477,19 @@ public class MainActivity extends AppCompatActivity {
                 handleBallCheckboxChange(isChecked);
             }
         });
+        LRb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                handleBallCheckboxChange(isChecked);
+            }
+        });
         FLB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 handleBallCheckboxChange(isChecked);
             }
         });
-        LRB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleBallCheckboxChange(isChecked);
-            }
-        });
+
         CRB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -460,7 +508,6 @@ public class MainActivity extends AppCompatActivity {
                 handleBallCheckboxChange(isChecked);
             }
         });
-
 
 
         StandStorm.setOnClickListener(new View.OnClickListener() {
@@ -553,16 +600,24 @@ public class MainActivity extends AppCompatActivity {
         svision.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                svision.setTextColor(Color.MAGENTA);
-        }
-
-    });
+                SandButBackround = !SandButBackround;
+                if (SandButBackround) {
+                    svision.setBackgroundResource(android.R.drawable.button_onoff_indicator_off);
+                } else {
+                    svision.setBackgroundResource(android.R.drawable.button_onoff_indicator_on);
+                }
+            }
+        });
         sauto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sauto.setTextColor(Color.MAGENTA);
+                SandButBackround = !SandButBackround;
+                if (SandButBackround) {
+                    sauto.setBackgroundResource(android.R.drawable.button_onoff_indicator_off);
+                } else {
+                    sauto.setBackgroundResource(android.R.drawable.button_onoff_indicator_on);
+                }
             }
-
         });
 
         BtnBPr.setOnClickListener(new View.OnClickListener() {
@@ -600,6 +655,42 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("Timestamp: " + (new Date()).getTime());
                     myOutWriter.println("Competition: ");
                     myOutWriter.println("Match: " + match);
+                    myOutWriter.println("RedAlliance: " + RedAlliance.isChecked());
+                    myOutWriter.println("BlueAlliance: " + BlueAlliance.isChecked());
+                    myOutWriter.println("Balls In SandStorm: " + sandBallA.getText());
+                    myOutWriter.println("Hatch In SandStorm: " + sandHatchA.getText());
+                    myOutWriter.println("Fell Over: " + fo.isChecked());
+                    myOutWriter.println("Broke Down: " + bd.isChecked());
+                    myOutWriter.println("Communication issues: " + ci.isChecked());
+                    myOutWriter.println("Dropped Battery/Bumpers/Parts: " + dbbp.isChecked());
+                    myOutWriter.println("speed: " + ((Spinner) findViewById(R.id.speed)).getSelectedItem().toString());
+                    myOutWriter.println("Hatch in top left: " + RTopleft.isChecked());
+                    myOutWriter.println("Hatch in top Right: " + RTopright.isChecked());
+                    myOutWriter.println("Hatch in top Right Left: " + RTopleft1.isChecked());
+                    myOutWriter.println("Hatch in top Right Right: " + RTopright1.isChecked());
+                    myOutWriter.println("Ball in middle left: " + RmiddleLeft.isChecked());
+                    myOutWriter.println("Hatch in middle Right left: " + RmiddleLeft1.isChecked());
+                    myOutWriter.println("Hatch in middle Right Right: " + RmiddleRight1.isChecked());
+                    myOutWriter.println("Hatch in middle Right: " + RmiddleRight.isChecked());
+                    myOutWriter.println("Hatch in Bottom left: " + RBottoml.isChecked());
+                    myOutWriter.println("Hatch in Bottom Right: " + RBottomRight.isChecked());
+                    myOutWriter.println("Hatch in Bottom Right Right: " + RBottomRight1.isChecked());
+                    myOutWriter.println("Hatch in Bottom Left Right: " + RBottomleft1.isChecked());
+                    myOutWriter.println("Balls In top of Rocket: " + tn + tnr);
+                    myOutWriter.println("Balls In Middle of Rocket: " + mn + nmr);
+                    myOutWriter.println("Balls In Bottom of Rocket: " + Bn + BNr);
+                    myOutWriter.println("Hatch in Bottom left: " + LH.isChecked());
+                    myOutWriter.println("Hatch in Bottom left: " + CLH.isChecked());
+                    myOutWriter.println("Hatch in Bottom left: " + RLH.isChecked());
+                    myOutWriter.println("Hatch in Bottom left: " + FLH.isChecked());
+                    myOutWriter.println("Hatch in Bottom left: " + LRH.isChecked());
+                    myOutWriter.println("Hatch in Bottom left: " + CRH.isChecked());
+                    myOutWriter.println("Hatch in Bottom left: " + RRH.isChecked());
+                    myOutWriter.println("Hatch in Bottom left: "+ FRH.isChecked());
+                    myOutWriter.println("notes: "+ notes);
+                    myOutWriter.println("Won: "+ ((Spinner)findViewById(R.id.wlt)).getSelectedItem().toString());
+
+
                     myOutWriter.flush();
                     myOutWriter.close();
                     fOut.close();
@@ -660,8 +751,8 @@ public class MainActivity extends AppCompatActivity {
         ((CheckBox) findViewById(R.id.CRH)).setChecked(false);
         ((CheckBox) findViewById(R.id.LRB)).setChecked(false);
         ((CheckBox) findViewById(R.id.LRH)).setChecked(false);
-        ((Button)   findViewById(R.id.svision)).setTextColor(Color.BLACK);
-        ((Button)   findViewById(R.id.sauto)).setTextColor(Color.BLACK);
+        ((Button) findViewById(R.id.svision)).setTextColor(Color.BLACK);
+        ((Button) findViewById(R.id.sauto)).setTextColor(Color.BLACK);
         ((Spinner) findViewById(R.id.wlt)).setSelection(0);
         ((Spinner) findViewById(R.id.speed)).setSelection(0);
         sandstormscore = 0;
@@ -687,7 +778,3 @@ public class MainActivity extends AppCompatActivity {
         return myDir;
     }
 }
-
-
-
-

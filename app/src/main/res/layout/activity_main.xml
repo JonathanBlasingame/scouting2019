@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/Right"
-        app:layout_constraintEnd_toEndOf="@+id/RBottoml"
-        app:layout_constraintStart_toStartOf="@+id/RBottoml" />
+        app:layout_constraintEnd_toEndOf="@+id/CLH"
+        app:layout_constraintStart_toStartOf="@+id/CLH" />
 
     <CheckBox
         android:id="@+id/CLH"
@@ -24,8 +24,8 @@
         android:layout_height="wrap_content"
         android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/Center"
-        app:layout_constraintEnd_toEndOf="@+id/RBottoml"
-        app:layout_constraintStart_toStartOf="@+id/RBottoml" />
+        app:layout_constraintEnd_toEndOf="@+id/LH"
+        app:layout_constraintStart_toStartOf="@+id/LH" />
 
     <CheckBox
         android:id="@+id/blueAlliance"
@@ -34,9 +34,8 @@
         android:layout_marginEnd="16dp"
         android:text="Blue Alliance"
         android:textColor="#0037b1"
-        app:layout_constraintBottom_toBottomOf="@+id/RedAlliance"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/RedAlliance" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/RedAlliance"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <CheckBox
         android:id="@+id/RedAlliance"
@@ -44,7 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:text="Red Alliance"
         android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toStartOf="@+id/blueAlliance"
@@ -53,9 +53,10 @@
 
     <EditText
         android:id="@+id/teamNumber"
-        android:layout_width="75dp"
+        android:layout_width="104dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:background="@android:drawable/edit_text"
         android:ems="10"
         android:hint="Team #"
         android:inputType="number"
@@ -68,6 +69,7 @@
         android:layout_width="68dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:background="@android:drawable/edit_text"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
@@ -76,10 +78,12 @@
 
     <Button
         android:id="@+id/svision"
+        style="@android:style/Widget.Button.Toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@android:drawable/button_onoff_indicator_off"
         android:text="vision"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         app:layout_constraintBottom_toTopOf="@+id/sandHatchA"
@@ -92,7 +96,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="middle"
+        app:layout_constraintEnd_toEndOf="@+id/t_rocket"
         app:layout_constraintTop_toBottomOf="@+id/t_rocket" />
 
     <Button
@@ -101,9 +108,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="bottom"
-        app:layout_constraintTop_toBottomOf="@+id/m_rocket"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="@+id/m_rocket"
+        app:layout_constraintTop_toBottomOf="@+id/m_rocket" />
 
     <Button
         android:id="@+id/t_rocket"
@@ -117,20 +126,24 @@
 
     <EditText
         android:id="@+id/matchNumber"
-        android:layout_width="75dp"
+        style="@android:style/Widget.AutoCompleteTextView"
+        android:layout_width="84dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:background="@android:drawable/edit_text"
         android:ems="10"
-        android:hint="Match #"
+        android:hint="Match "
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/ScouterName"
         app:layout_constraintStart_toEndOf="@+id/ScouterName" />
 
     <Button
         android:id="@+id/sauto"
+        style="@android:style/Widget.Button.Toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="auto"
+        android:background="@android:drawable/button_onoff_indicator_off"
+        android:text="Auto"
         app:layout_constraintBottom_toBottomOf="@+id/sandHatchA"
         app:layout_constraintEnd_toEndOf="@+id/svision"
         app:layout_constraintStart_toStartOf="@+id/svision"
@@ -190,9 +203,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="left"
+        android:text="Left"
+        android:textColor="@android:color/black"
         android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="@+id/b_rocket"
         app:layout_constraintStart_toStartOf="@+id/b_rocket"
         app:layout_constraintTop_toBottomOf="@+id/b_rocket" />
 
@@ -202,8 +215,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Center"
+        android:textColor="@android:color/black"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/Left"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Left" />
 
     <TextView
@@ -212,16 +226,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Right"
+        android:textColor="@android:color/black"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="@+id/Center"
         app:layout_constraintTop_toBottomOf="@+id/Center" />
 
     <TextView
-        android:id="@+id/front"
+        android:id="@+id/Front"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Front"
+        android:textColor="@android:color/black"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/Right"
         app:layout_constraintStart_toStartOf="@+id/Right"
@@ -229,24 +245,28 @@
 
     <EditText
         android:id="@+id/finalScore"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="700dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@android:drawable/edit_text"
         android:ems="10"
         android:hint="Final Score "
         android:inputType="number"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/notes"
-        android:layout_width="wrap_content"
+        android:layout_width="177dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:background="@android:drawable/edit_text"
         android:ems="10"
         android:hint="Notes"
         android:inputType="textPersonName"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="@+id/finalScore"
         app:layout_constraintEnd_toStartOf="@+id/finalScore"
         app:layout_constraintTop_toTopOf="@+id/finalScore" />
@@ -267,11 +287,12 @@
 
     <Spinner
         android:id="@+id/wlt"
-        android:layout_width="100dp"
-        android:layout_height="29dp"
+        android:layout_width="102dp"
+        android:layout_height="41dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:background="@android:drawable/spinner_dropdown_background"
         android:entries="@array/wltValues"
+        android:popupBackground="@android:drawable/spinner_dropdown_background"
         app:layout_constraintBottom_toBottomOf="@+id/notes"
         app:layout_constraintEnd_toStartOf="@+id/notes"
         app:layout_constraintStart_toStartOf="parent"
@@ -327,12 +348,12 @@
         android:id="@+id/RmiddleLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBottom_toBottomOf="@+id/m_rocket"
-        app:layout_constraintStart_toEndOf="@+id/m_rocket"
-        app:layout_constraintTop_toTopOf="@+id/m_rocket" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/m_rocket"
+        app:layout_constraintEnd_toEndOf="@+id/RTopleft"
+        app:layout_constraintStart_toStartOf="@+id/RTopleft" />
 
     <CheckBox
         android:id="@+id/RmiddleRight1"
@@ -341,7 +362,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBaseline_toBaselineOf="@+id/Rmiddleleft1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/BtnMNr"
         app:layout_constraintEnd_toEndOf="@+id/RTopright1"
         app:layout_constraintStart_toEndOf="@+id/BtnTnr" />
 
@@ -352,7 +373,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBaseline_toBaselineOf="@+id/RmiddleLeft"
+        app:layout_constraintBaseline_toBaselineOf="@+id/BtnMN"
         app:layout_constraintEnd_toEndOf="@+id/RTopright"
         app:layout_constraintStart_toEndOf="@+id/BtnTN" />
 
@@ -360,18 +381,17 @@
         android:id="@+id/RBottoml"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBottom_toBottomOf="@+id/b_rocket"
-        app:layout_constraintStart_toEndOf="@+id/b_rocket"
-        app:layout_constraintTop_toTopOf="@+id/b_rocket" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/b_rocket"
+        app:layout_constraintEnd_toEndOf="@+id/RmiddleLeft"
+        app:layout_constraintStart_toStartOf="@+id/RmiddleLeft" />
 
     <CheckBox
         android:id="@+id/RBottomRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBaseline_toBaselineOf="@+id/RBottoml"
+        app:layout_constraintBaseline_toBaselineOf="@+id/BtnBN"
         app:layout_constraintEnd_toEndOf="@+id/RmiddleRight"
         app:layout_constraintStart_toStartOf="@+id/RmiddleRight" />
 
@@ -389,7 +409,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBaseline_toBaselineOf="@+id/RBottomleft1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/BtnBNr"
         app:layout_constraintEnd_toEndOf="@+id/RmiddleRight1"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/RmiddleRight1" />
@@ -464,6 +484,7 @@
 
     <ImageButton
         android:id="@+id/s1"
+        style="@android:style/Widget.ImageButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
@@ -484,10 +505,9 @@
         android:text="+"
         android:textAlignment="viewStart"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/RmiddleLeft"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RmiddleLeft"
         app:layout_constraintEnd_toStartOf="@+id/tn"
-        app:layout_constraintStart_toEndOf="@+id/RmiddleLeft"
-        app:layout_constraintTop_toTopOf="@+id/RmiddleLeft" />
+        app:layout_constraintStart_toEndOf="@+id/RmiddleLeft" />
 
     <TextView
         android:id="@+id/Mn"
@@ -522,7 +542,8 @@
         android:textAlignment="center"
         android:textSize="25sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/RBottoml"
-        app:layout_constraintStart_toEndOf="@+id/RBottoml" />
+        app:layout_constraintEnd_toEndOf="@+id/BtnMP"
+        app:layout_constraintStart_toStartOf="@+id/BtnMP" />
 
     <TextView
         android:id="@+id/Bn"
@@ -566,9 +587,8 @@
         android:layout_height="41dp"
         android:text="+"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/Rmiddleleft1"
-        app:layout_constraintStart_toEndOf="@+id/Rmiddleleft1"
-        app:layout_constraintTop_toTopOf="@+id/Rmiddleleft1" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/Rmiddleleft1"
+        app:layout_constraintStart_toEndOf="@+id/Rmiddleleft1" />
 
     <Button
         android:id="@+id/BtnMNr"
@@ -615,7 +635,7 @@
         android:text="-"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BtnBPr"
+        app:layout_constraintBaseline_toBaselineOf="@+id/BNr"
         app:layout_constraintEnd_toStartOf="@+id/RBottomRight1"
         app:layout_constraintStart_toEndOf="@+id/nmr" />
 
@@ -635,9 +655,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBaseline_toBaselineOf="@+id/front"
-        app:layout_constraintEnd_toEndOf="@+id/RBottoml"
-        app:layout_constraintStart_toStartOf="@+id/RBottoml" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/Front"
+        app:layout_constraintEnd_toEndOf="@+id/RLH"
+        app:layout_constraintStart_toStartOf="@+id/RLH" />
 
     <CheckBox
         android:id="@+id/LRH"
@@ -654,8 +674,8 @@
         android:layout_height="wrap_content"
         android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/CLB"
-        app:layout_constraintEnd_toEndOf="@+id/RBottomleft1"
-        app:layout_constraintStart_toStartOf="@+id/RBottomleft1" />
+        app:layout_constraintEnd_toEndOf="@+id/LRH"
+        app:layout_constraintStart_toStartOf="@+id/LRH" />
 
     <CheckBox
         android:id="@+id/FRH"
@@ -663,34 +683,41 @@
         android:layout_height="wrap_content"
         android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/FLB"
-        app:layout_constraintEnd_toEndOf="@+id/RBottomleft1"
-        app:layout_constraintStart_toStartOf="@+id/RBottomleft1" />
+        app:layout_constraintEnd_toEndOf="@+id/RRH"
+        app:layout_constraintStart_toStartOf="@+id/RRH" />
 
     <CheckBox
         android:id="@+id/RRH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/RLB"
-        app:layout_constraintEnd_toEndOf="@+id/RBottomleft1"
-        app:layout_constraintStart_toStartOf="@+id/RBottomleft1" />
+        app:layout_constraintEnd_toEndOf="@+id/CRH"
+        app:layout_constraintStart_toStartOf="@+id/CRH" />
 
     <CheckBox
         android:id="@+id/LB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/LH"
         app:layout_constraintEnd_toEndOf="@+id/Bn"
         app:layout_constraintStart_toStartOf="@+id/Bn" />
 
     <CheckBox
         android:id="@+id/LRB"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/LRH"
-        app:layout_constraintEnd_toEndOf="@+id/BNr"
-        app:layout_constraintStart_toStartOf="@+id/BNr" />
+        app:layout_constraintEnd_toStartOf="@+id/BtnBNr"
+        app:layout_constraintStart_toEndOf="@+id/BtnBPr" />
 
     <CheckBox
         android:id="@+id/CRB"
@@ -704,10 +731,9 @@
         android:id="@+id/FLB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/FLH"
-        app:layout_constraintEnd_toStartOf="@+id/BtnBN"
-        app:layout_constraintStart_toStartOf="@+id/Bn"
+        app:layout_constraintEnd_toEndOf="@+id/RLB"
+        app:layout_constraintStart_toStartOf="@+id/RLB"
         tools:checked="false" />
 
     <CheckBox
@@ -731,16 +757,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/CLH"
-        app:layout_constraintEnd_toEndOf="@+id/Bn"
-        app:layout_constraintStart_toStartOf="@+id/Bn" />
+        app:layout_constraintEnd_toEndOf="@+id/LB"
+        app:layout_constraintStart_toStartOf="@+id/LB" />
 
     <CheckBox
         android:id="@+id/RLB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/RLH"
-        app:layout_constraintEnd_toEndOf="@+id/Bn"
-        app:layout_constraintStart_toStartOf="@+id/Bn" />
+        app:layout_constraintEnd_toEndOf="@+id/CLB"
+        app:layout_constraintStart_toStartOf="@+id/CLB" />
 
     <TextView
         android:id="@+id/sandBallA"
@@ -762,7 +788,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="8dp"
-        android:contentDescription="Teleop"
         android:text="TELE-OP"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/t_rocket"
@@ -784,11 +809,13 @@
 
     <Spinner
         android:id="@+id/speed"
-        android:layout_width="112dp"
-        android:layout_height="29dp"
+        android:layout_width="102dp"
+        android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@android:drawable/spinner_dropdown_background"
         android:entries="@array/speedValues"
+        android:popupBackground="@android:drawable/spinner_dropdown_background"
         app:layout_constraintBaseline_toBaselineOf="@+id/bd"
         app:layout_constraintEnd_toEndOf="@+id/fo"
         app:layout_constraintStart_toEndOf="@+id/bd" />
@@ -811,8 +838,6 @@
         android:layout_height="65dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/StandStorm"
         app:layout_constraintStart_toEndOf="@+id/StandStorm"
         app:layout_constraintTop_toTopOf="@+id/StandStorm"></ImageSwitcher>
