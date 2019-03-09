@@ -115,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
     int finalScore = 0;
     String matchNumber = "";
     String wlt = "";
+    String EndGame = "";
+    String StartingP ="";
     String speed = "";
     TextView txtCount;
 
@@ -641,7 +643,7 @@ public class MainActivity extends AppCompatActivity {
                 finalScore = getIntValue(R.id.finalScore, "Final Score");
                 int match = getIntValue(R.id.matchNumber, "Match Number");
 
-                if (ScouterName == null || ScouterName.length() == 0 || match == 0 || teamNumber == 0 || finalScore == 0 || wlt.equalsIgnoreCase("Results")) {
+                if (ScouterName == null || ScouterName.length() == 0 || match == 0 || teamNumber == 0 || finalScore == 0 || wlt.equalsIgnoreCase("Results")|| StartingP.equalsIgnoreCase("Postion")|| EndGame.equalsIgnoreCase("EndGame")) {
                     Toast.makeText(getApplicationContext(), "Please complete the form before saving", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -661,6 +663,7 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("Match: " + match);
                     myOutWriter.println("RedAlliance: " + RedAlliance.isChecked());
                     myOutWriter.println("BlueAlliance: " + BlueAlliance.isChecked());
+                    myOutWriter.println("Postion: "+ ((Spinner)findViewById(R.id.StartingP)).getSelectedItem().toString());
                     myOutWriter.println("Balls In SandStorm: " + sandBallA.getText());
                     myOutWriter.println("Hatch In SandStorm: " + sandHatchA.getText());
                     myOutWriter.println("Fell Over: " + fo.isChecked());
@@ -693,6 +696,7 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("Hatch in Bottom left: "+ FRH.isChecked());
                     myOutWriter.println("notes: "+ notes);
                     myOutWriter.println("Won: "+ ((Spinner)findViewById(R.id.wlt)).getSelectedItem().toString());
+                    myOutWriter.println("Level: "+ ((Spinner)findViewById(R.id.EndGame)).getSelectedItem().toString());
 
 
                     myOutWriter.flush();
@@ -758,6 +762,8 @@ public class MainActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.svision)).setTextColor(Color.BLACK);
         ((Button) findViewById(R.id.sauto)).setTextColor(Color.BLACK);
         ((Spinner) findViewById(R.id.wlt)).setSelection(0);
+        ((Spinner) findViewById(R.id.EndGame)).setSelection(0);
+        ((Spinner) findViewById(R.id.StartingP)).setSelection(0);
         ((Spinner) findViewById(R.id.speed)).setSelection(0);
         sandstormscore = 0;
         setSandstormScore(0);

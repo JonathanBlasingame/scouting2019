@@ -13,11 +13,19 @@
         <item>Fast</item>
     </string-array>
     <string-array name="StaringSpot">
-        <item>Staring Postion</item>
+        <item>Postion</item>
         <item>Left level 1</item>
         <item>Left level 2</item>
         <item>Center level 1</item>
         <item>Right level 1</item>
         <item>Right level 2</item>
+    </string-array>
+    <string-array name="EndGame">
+        <item>EndGame</item>
+        <item>level 0</item>
+        <item>level 1</item>
+        <item>level 2</item>
+        <item>level 3</item>
+
     </string-array>
 </resources>
