@@ -683,9 +683,9 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("Hatch in Bottom Right: " + RBottomRight.isChecked());
                     myOutWriter.println("Hatch in Bottom Right Right: " + RBottomRight1.isChecked());
                     myOutWriter.println("Hatch in Bottom Left Right: " + RBottomleft1.isChecked());
-                    myOutWriter.println("Balls In top of Rocket: " + tn + tnr);
-                    myOutWriter.println("Balls In Middle of Rocket: " + mn + nmr);
-                    myOutWriter.println("Balls In Bottom of Rocket: " + Bn + BNr);
+                    myOutWriter.println("Balls In top of Rocket: " + (tn + tnr));
+                    myOutWriter.println("Balls In Middle of Rocket: " + (mn + nmr));
+                    myOutWriter.println("Balls In Bottom of Rocket: " + (Bn + BNr));
                     myOutWriter.println("Hatch in Bottom left: " + LH.isChecked());
                     myOutWriter.println("Hatch in Bottom left: " + CLH.isChecked());
                     myOutWriter.println("Hatch in Bottom left: " + RLH.isChecked());
