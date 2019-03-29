@@ -6,6 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:visibility="visible"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="25dp">
 
@@ -14,18 +15,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBaseline_toBaselineOf="@+id/Right"
         app:layout_constraintEnd_toEndOf="@+id/CLH"
-        app:layout_constraintStart_toStartOf="@+id/CLH" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/CLH"
+        app:layout_constraintTop_toBottomOf="@+id/CLH" />
 
     <CheckBox
         android:id="@+id/CLH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBaseline_toBaselineOf="@+id/Center"
         app:layout_constraintEnd_toEndOf="@+id/LH"
-        app:layout_constraintStart_toStartOf="@+id/LH" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/LH"
+        app:layout_constraintTop_toBottomOf="@+id/LH" />
 
     <CheckBox
         android:id="@+id/blueAlliance"
@@ -95,25 +98,27 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:text="middle"
-        app:layout_constraintTop_toBottomOf="@+id/t_rocket" />
+        app:layout_constraintTop_toBottomOf="@+id/t_rocket"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/b_rocket"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="109dp"
+        android:layout_height="52dp"
         android:layout_marginTop="8dp"
         android:text="bottom"
-        app:layout_constraintTop_toBottomOf="@+id/m_rocket" />
+        app:layout_constraintTop_toBottomOf="@+id/m_rocket"
+        tools:layout_editor_absoluteX="-9dp" />
 
     <Button
         android:id="@+id/t_rocket"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="308dp"
+        android:layout_marginTop="396dp"
         android:text="Top"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
@@ -195,55 +200,115 @@
     <TextView
         android:id="@+id/Left"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Left"
+        android:layout_height="36dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="L1"
         android:textColor="@android:color/black"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/b_rocket"
+        app:layout_constraintEnd_toStartOf="@+id/LH"
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/b_rocket" />
+
+    <TextView
+        android:id="@+id/left2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:fontFamily="sans-serif"
+        android:text="R1"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/CRH"
+        app:layout_constraintEnd_toStartOf="@+id/LRH"
+        app:layout_constraintTop_toTopOf="@+id/LRH"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/Center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Center"
+        android:text="L2"
         android:textColor="@android:color/black"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Left"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/Left"
         app:layout_constraintTop_toBottomOf="@+id/Left" />
+
+    <TextView
+        android:id="@+id/center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="R2"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/left2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/left2"
+        app:layout_constraintTop_toBottomOf="@+id/left2" />
 
     <TextView
         android:id="@+id/Right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Right"
+        android:text="L3"
         android:textColor="@android:color/black"
         android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/Center"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/Center"
         app:layout_constraintTop_toBottomOf="@+id/Center" />
+
+    <TextView
+        android:id="@+id/right2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="R3"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/center"
+        app:layout_constraintStart_toStartOf="@+id/center"
+        app:layout_constraintTop_toBottomOf="@+id/center" />
 
     <TextView
         android:id="@+id/Front"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Front"
+        android:text="L0"
         android:textColor="@android:color/black"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/Right"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/Right"
         app:layout_constraintTop_toBottomOf="@+id/Right" />
+
+    <TextView
+        android:id="@+id/front"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:fontFamily="sans-serif"
+        android:text="R0"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/right2"
+        app:layout_constraintStart_toStartOf="@+id/right2"
+        app:layout_constraintTop_toBottomOf="@+id/right2" />
 
     <EditText
         android:id="@+id/finalScore"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="700dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginTop="804dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@android:drawable/edit_text"
         android:ems="10"
         android:hint="Final Score "
@@ -256,6 +321,8 @@
         android:id="@+id/notes"
         android:layout_width="177dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:background="@android:drawable/edit_text"
         android:ems="10"
         android:hint="Notes"
@@ -263,7 +330,8 @@
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="@+id/finalScore"
         app:layout_constraintEnd_toStartOf="@+id/finalScore"
-        app:layout_constraintTop_toTopOf="@+id/finalScore" />
+        app:layout_constraintTop_toTopOf="@+id/finalScore"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/StandStorm"
@@ -291,23 +359,29 @@
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="@+id/notes"
         app:layout_constraintEnd_toStartOf="@+id/notes"
+        app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/notes" />
+        app:layout_constraintTop_toTopOf="@+id/notes"
+        app:layout_constraintVertical_bias="0.428" />
 
     <CheckBox
         android:id="@+id/RTopleft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
         android:button="@drawable/custom_chk"
         app:layout_constraintBottom_toBottomOf="@+id/t_rocket"
         app:layout_constraintStart_toEndOf="@+id/t_rocket"
-        app:layout_constraintTop_toTopOf="@+id/t_rocket" />
+        app:layout_constraintTop_toTopOf="@+id/t_rocket"
+        app:layout_constraintVertical_bias="0.466" />
 
     <CheckBox
         android:id="@+id/RTopright"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/RTopleft"
         app:layout_constraintStart_toEndOf="@+id/BtnTN" />
@@ -316,29 +390,36 @@
         android:id="@+id/RTopleft1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:button="@drawable/custom_chk"
         app:layout_constraintBottom_toBottomOf="@+id/RTopright"
         app:layout_constraintStart_toEndOf="@+id/RTopright"
-        app:layout_constraintTop_toTopOf="@+id/RTopright" />
+        app:layout_constraintTop_toTopOf="@+id/RTopright"
+        app:layout_constraintVertical_bias="0.0" />
 
     <CheckBox
         android:id="@+id/RTopright1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:button="@drawable/custom_chk"
         app:layout_constraintBottom_toBottomOf="@+id/RTopleft1"
         app:layout_constraintStart_toEndOf="@+id/BtnTnr"
-        app:layout_constraintTop_toTopOf="@+id/RTopleft1" />
+        app:layout_constraintTop_toTopOf="@+id/RTopleft1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <CheckBox
         android:id="@+id/Rmiddleleft1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBaseline_toBaselineOf="@+id/RmiddleRight"
-        app:layout_constraintStart_toEndOf="@+id/RmiddleRight" />
+        app:layout_constraintBottom_toBottomOf="@+id/RmiddleRight"
+        app:layout_constraintEnd_toEndOf="@+id/RTopleft1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/RTopleft1"
+        app:layout_constraintTop_toTopOf="@+id/RmiddleRight" />
 
     <CheckBox
         android:id="@+id/RmiddleLeft"
@@ -349,27 +430,30 @@
         android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/m_rocket"
         app:layout_constraintEnd_toEndOf="@+id/RTopleft"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/RTopleft" />
 
     <CheckBox
         android:id="@+id/RmiddleRight1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BtnMNr"
+        app:layout_constraintBottom_toBottomOf="@+id/Rmiddleleft1"
         app:layout_constraintEnd_toEndOf="@+id/RTopright1"
-        app:layout_constraintStart_toEndOf="@+id/BtnTnr" />
+        app:layout_constraintStart_toStartOf="@+id/RTopright1"
+        app:layout_constraintTop_toTopOf="@+id/Rmiddleleft1"
+        app:layout_constraintVertical_bias="1.0" />
 
     <CheckBox
         android:id="@+id/RmiddleRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BtnMN"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RmiddleLeft"
         app:layout_constraintEnd_toEndOf="@+id/RTopright"
         app:layout_constraintStart_toEndOf="@+id/BtnTN" />
 
@@ -380,6 +464,7 @@
         android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/b_rocket"
         app:layout_constraintEnd_toEndOf="@+id/RmiddleLeft"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/RmiddleLeft" />
 
     <CheckBox
@@ -387,15 +472,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BtnBN"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RBottoml"
         app:layout_constraintEnd_toEndOf="@+id/RmiddleRight"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/RmiddleRight" />
 
     <CheckBox
         android:id="@+id/RBottomleft1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/RBottomRight"
         app:layout_constraintStart_toEndOf="@+id/RBottomRight" />
@@ -405,55 +492,67 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BtnBNr"
+        app:layout_constraintBottom_toBottomOf="@+id/RBottomleft1"
         app:layout_constraintEnd_toEndOf="@+id/RmiddleRight1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/RmiddleRight1" />
+        app:layout_constraintStart_toStartOf="@+id/RmiddleRight1"
+        app:layout_constraintTop_toTopOf="@+id/RBottomleft1" />
 
     <Button
         android:id="@+id/BtnTP"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="36dp"
         android:layout_height="43dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:text="+"
         android:textAlignment="viewEnd"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="@+id/RTopleft"
         app:layout_constraintStart_toEndOf="@+id/RTopleft"
-        app:layout_constraintTop_toTopOf="@+id/RTopleft" />
+        app:layout_constraintTop_toTopOf="@+id/RTopleft"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnTPr"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="36dp"
         android:layout_height="43dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:text="+"
         android:textAlignment="viewEnd"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="@+id/RTopleft1"
         app:layout_constraintStart_toEndOf="@+id/RTopleft1"
-        app:layout_constraintTop_toTopOf="@+id/RTopleft1" />
+        app:layout_constraintTop_toTopOf="@+id/RTopleft1"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tn"
         android:layout_width="32dp"
         android:layout_height="41dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:text="0"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BtnTP"
-        app:layout_constraintStart_toEndOf="@+id/BtnTP" />
+        app:layout_constraintBottom_toBottomOf="@+id/BtnTP"
+        app:layout_constraintStart_toEndOf="@+id/BtnTP"
+        app:layout_constraintTop_toTopOf="@+id/BtnTP" />
 
     <Button
         android:id="@+id/BtnTN"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="33dp"
         android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:text="-"
         android:textAlignment="viewStart"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tn"
+        app:layout_constraintBottom_toBottomOf="@+id/tn"
         app:layout_constraintStart_toEndOf="@+id/tn"
+        app:layout_constraintTop_toTopOf="@+id/tn"
         tools:text="-" />
 
     <Button
@@ -461,32 +560,38 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="33dp"
         android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:text="-"
         android:textAlignment="viewStart"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tnr"
+        app:layout_constraintBottom_toBottomOf="@+id/tnr"
         app:layout_constraintStart_toEndOf="@+id/tnr"
+        app:layout_constraintTop_toTopOf="@+id/tnr"
         tools:text="-" />
 
     <TextView
         android:id="@+id/tnr"
         android:layout_width="32dp"
         android:layout_height="41dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:text="0"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnTPr"
-        app:layout_constraintStart_toEndOf="@+id/btnTPr" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnTPr"
+        app:layout_constraintStart_toEndOf="@+id/btnTPr"
+        app:layout_constraintTop_toTopOf="@+id/btnTPr" />
 
     <ImageButton
         android:id="@+id/s1"
         style="@android:style/Widget.ImageButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/img_buttons"
         app:layout_constraintEnd_toEndOf="@+id/finalScore"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toStartOf="@+id/finalScore"
         app:layout_constraintTop_toBottomOf="@+id/finalScore"
         tools:src="@android:drawable/ic_menu_save" />
@@ -497,37 +602,43 @@
         android:layout_width="36dp"
         android:layout_height="43dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
         android:text="+"
         android:textAlignment="viewStart"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/RmiddleLeft"
-        app:layout_constraintEnd_toStartOf="@+id/tn"
-        app:layout_constraintStart_toEndOf="@+id/RmiddleLeft" />
+        app:layout_constraintBottom_toBottomOf="@+id/RmiddleLeft"
+        app:layout_constraintEnd_toEndOf="@+id/BtnTP"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/BtnTP"
+        app:layout_constraintTop_toTopOf="@+id/RmiddleLeft"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/Mn"
         android:layout_width="32dp"
         android:layout_height="41dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:text="0"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BtnMP"
-        app:layout_constraintStart_toEndOf="@+id/BtnMP" />
+        app:layout_constraintBottom_toBottomOf="@+id/BtnMP"
+        app:layout_constraintStart_toEndOf="@+id/BtnMP"
+        app:layout_constraintTop_toTopOf="@+id/BtnMP" />
 
     <Button
         android:id="@+id/BtnMN"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="36dp"
+        android:layout_width="31dp"
         android:layout_height="41dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
         android:text="-"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/Mn"
-        app:layout_constraintEnd_toStartOf="@+id/RmiddleRight"
-        app:layout_constraintStart_toEndOf="@+id/Mn" />
+        app:layout_constraintBottom_toBottomOf="@+id/Mn"
+        app:layout_constraintStart_toEndOf="@+id/Mn"
+        app:layout_constraintTop_toTopOf="@+id/Mn" />
 
     <Button
         android:id="@+id/BtnBP"
@@ -537,20 +648,24 @@
         android:text="+"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/RBottoml"
+        app:layout_constraintBottom_toBottomOf="@+id/RBottoml"
         app:layout_constraintEnd_toEndOf="@+id/BtnMP"
-        app:layout_constraintStart_toStartOf="@+id/BtnMP" />
+        app:layout_constraintStart_toStartOf="@+id/BtnMP"
+        app:layout_constraintTop_toTopOf="@+id/RBottoml"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/Bn"
         android:layout_width="32dp"
         android:layout_height="41dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:text="0"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BtnBP"
-        app:layout_constraintEnd_toEndOf="@+id/Mn"
-        app:layout_constraintStart_toStartOf="@+id/Mn" />
+        app:layout_constraintBottom_toBottomOf="@+id/BtnBP"
+        app:layout_constraintStart_toEndOf="@+id/BtnBP"
+        app:layout_constraintTop_toTopOf="@+id/BtnBP" />
 
     <Button
         android:id="@+id/BtnBN"
@@ -558,23 +673,26 @@
         android:layout_width="36dp"
         android:layout_height="41dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
         android:text="-"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/Bn"
-        app:layout_constraintEnd_toStartOf="@+id/RmiddleRight"
-        app:layout_constraintStart_toEndOf="@+id/Mn" />
+        app:layout_constraintBottom_toBottomOf="@+id/Bn"
+        app:layout_constraintStart_toEndOf="@+id/Bn"
+        app:layout_constraintTop_toTopOf="@+id/Bn" />
 
     <TextView
         android:id="@+id/nmr"
         android:layout_width="32dp"
         android:layout_height="41dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:text="0"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BtnMPr"
-        app:layout_constraintEnd_toEndOf="@+id/tnr"
-        app:layout_constraintStart_toStartOf="@+id/tnr" />
+        app:layout_constraintBottom_toBottomOf="@+id/BtnMPr"
+        app:layout_constraintStart_toEndOf="@+id/BtnMPr"
+        app:layout_constraintTop_toTopOf="@+id/BtnMPr"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/BtnMPr"
@@ -583,8 +701,12 @@
         android:layout_height="41dp"
         android:text="+"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/Rmiddleleft1"
-        app:layout_constraintStart_toEndOf="@+id/Rmiddleleft1" />
+        app:layout_constraintBottom_toBottomOf="@+id/Rmiddleleft1"
+        app:layout_constraintEnd_toEndOf="@+id/btnTPr"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnTPr"
+        app:layout_constraintTop_toTopOf="@+id/Rmiddleleft1"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/BtnMNr"
@@ -592,13 +714,13 @@
         android:layout_width="36dp"
         android:layout_height="41dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
         android:text="-"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/nmr"
-        app:layout_constraintEnd_toStartOf="@+id/RmiddleRight1"
-        app:layout_constraintStart_toEndOf="@+id/nmr" />
+        app:layout_constraintBottom_toBottomOf="@+id/nmr"
+        app:layout_constraintStart_toEndOf="@+id/nmr"
+        app:layout_constraintTop_toTopOf="@+id/nmr" />
 
     <Button
         android:id="@+id/BtnBPr"
@@ -607,61 +729,75 @@
         android:layout_height="41dp"
         android:text="+"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/RBottomleft1"
-        app:layout_constraintStart_toEndOf="@+id/RBottomleft1" />
+        app:layout_constraintBottom_toBottomOf="@+id/RBottomleft1"
+        app:layout_constraintEnd_toEndOf="@+id/BtnMPr"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/BtnMPr"
+        app:layout_constraintTop_toTopOf="@+id/RBottomleft1"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/BNr"
         android:layout_width="32dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:text="0"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BtnBPr"
-        app:layout_constraintEnd_toEndOf="@+id/nmr"
-        app:layout_constraintStart_toEndOf="@+id/BtnBPr" />
+        app:layout_constraintBottom_toBottomOf="@+id/BtnBPr"
+        app:layout_constraintStart_toEndOf="@+id/BtnBPr"
+        app:layout_constraintTop_toTopOf="@+id/BtnBPr"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/BtnBNr"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="36dp"
         android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:text="-"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BNr"
-        app:layout_constraintEnd_toStartOf="@+id/RBottomRight1"
-        app:layout_constraintStart_toEndOf="@+id/nmr" />
+        app:layout_constraintBottom_toBottomOf="@+id/BNr"
+        app:layout_constraintStart_toEndOf="@+id/BNr"
+        app:layout_constraintTop_toTopOf="@+id/BNr" />
 
     <CheckBox
         android:id="@+id/LH"
         style="@style/Widget.AppCompat.CompoundButton.CheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:button="@drawable/custom_chk"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBaseline_toBaselineOf="@+id/Left"
-        app:layout_constraintEnd_toEndOf="@+id/RBottoml"
-        app:layout_constraintStart_toStartOf="@+id/RBottoml" />
+        app:layout_constraintBottom_toBottomOf="@+id/Left"
+        app:layout_constraintEnd_toStartOf="@+id/LB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Left" />
 
     <CheckBox
         android:id="@+id/FLH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/custom_chk"
-        app:layout_constraintBaseline_toBaselineOf="@+id/Front"
         app:layout_constraintEnd_toEndOf="@+id/RLH"
-        app:layout_constraintStart_toStartOf="@+id/RLH" />
+        app:layout_constraintStart_toStartOf="@+id/RLH"
+        app:layout_constraintTop_toBottomOf="@+id/RLH" />
 
     <CheckBox
         android:id="@+id/LRH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/LB"
-        app:layout_constraintEnd_toEndOf="@+id/RBottomleft1"
+        app:layout_constraintEnd_toStartOf="@+id/LRB"
         app:layout_constraintStart_toStartOf="@+id/RBottomleft1" />
 
     <CheckBox
@@ -671,6 +807,7 @@
         android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/CLB"
         app:layout_constraintEnd_toEndOf="@+id/LRH"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/LRH" />
 
     <CheckBox
@@ -680,6 +817,7 @@
         android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/FLB"
         app:layout_constraintEnd_toEndOf="@+id/RRH"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/RRH" />
 
     <CheckBox
@@ -689,6 +827,7 @@
         android:button="@drawable/custom_chk"
         app:layout_constraintBaseline_toBaselineOf="@+id/RLB"
         app:layout_constraintEnd_toEndOf="@+id/CRH"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/CRH" />
 
     <CheckBox
@@ -701,6 +840,7 @@
         android:layout_marginRight="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/LH"
         app:layout_constraintEnd_toEndOf="@+id/Bn"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="@+id/Bn" />
 
     <CheckBox
@@ -713,6 +853,7 @@
         android:layout_marginRight="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/LRH"
         app:layout_constraintEnd_toStartOf="@+id/BtnBNr"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/BtnBPr" />
 
     <CheckBox
@@ -721,6 +862,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/CRH"
         app:layout_constraintEnd_toEndOf="@+id/LRB"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/LRB" />
 
     <CheckBox
@@ -729,6 +871,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/FLH"
         app:layout_constraintEnd_toEndOf="@+id/RLB"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/RLB"
         tools:checked="false" />
 
@@ -738,6 +881,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/FRH"
         app:layout_constraintEnd_toEndOf="@+id/RRB"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/RRB" />
 
     <CheckBox
@@ -746,6 +890,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/RRH"
         app:layout_constraintEnd_toEndOf="@+id/CRB"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/CRB" />
 
     <CheckBox
@@ -754,6 +899,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/CLH"
         app:layout_constraintEnd_toEndOf="@+id/LB"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/LB" />
 
     <CheckBox
@@ -762,6 +908,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/RLH"
         app:layout_constraintEnd_toEndOf="@+id/CLB"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/CLB" />
 
     <TextView
@@ -788,9 +935,10 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/t_rocket"
         app:layout_constraintEnd_toEndOf="@+id/StandStorm"
-        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintHorizontal_bias="0.194"
         app:layout_constraintStart_toStartOf="@+id/t_rocket"
-        app:layout_constraintTop_toBottomOf="@+id/StandStorm" />
+        app:layout_constraintTop_toBottomOf="@+id/StandStorm"
+        app:layout_constraintVertical_bias="0.347" />
 
     <TextView
         android:id="@+id/sandHatchA"
@@ -828,7 +976,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/Teleop"
         app:layout_constraintStart_toEndOf="@+id/Teleop"
         app:layout_constraintTop_toBottomOf="@+id/sauto"
-        app:layout_constraintVertical_bias="0.00999999"></ImageSwitcher>
+        app:layout_constraintVertical_bias="0.0"></ImageSwitcher>
 
     <ImageSwitcher
         android:id="@+id/imageSwitcher2"
@@ -872,8 +1020,228 @@
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="@+id/s1"
         app:layout_constraintEnd_toEndOf="@+id/finalScore"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="@+id/notes"
-        app:layout_constraintTop_toBottomOf="@+id/notes" />
+        app:layout_constraintTop_toBottomOf="@+id/notes"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/RocketLabel2"
+        android:layout_width="110dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Right Rocket"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageSwitcher1" />
+
+    <TextView
+        android:id="@+id/RocketLabel"
+        android:layout_width="110dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Left Rocket"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageSwitcher1" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="52dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Left Hatch"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/RTopleft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Teleop"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="52dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Left Ball"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/LH"
+        app:layout_constraintEnd_toEndOf="@+id/LB"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/LB"
+        app:layout_constraintTop_toBottomOf="@+id/RBottoml"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="52dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Right Ball"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/LH"
+        app:layout_constraintEnd_toEndOf="@+id/LRB"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/LRB"
+        app:layout_constraintTop_toBottomOf="@+id/RBottoml"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="52dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Left Hatch"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/LH"
+        app:layout_constraintEnd_toEndOf="@+id/LH"
+        app:layout_constraintStart_toStartOf="@+id/LH"
+        app:layout_constraintTop_toBottomOf="@+id/RBottoml"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="52dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Right Hatch"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/LH"
+        app:layout_constraintEnd_toEndOf="@+id/LRH"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/LRH"
+        app:layout_constraintTop_toBottomOf="@+id/RBottoml"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="53dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="244dp"
+        android:layout_marginLeft="244dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Right Hatch"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/RTopleft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Teleop"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="53dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="424dp"
+        android:layout_marginLeft="424dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Right Hatch"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/RTopleft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Teleop"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="49dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="296dp"
+        android:layout_marginLeft="296dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Left Hatch"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/RTopleft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Teleop"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Ball"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/tn"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="34dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Ball"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/tn"
+        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="88dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Cargo Ship"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/Left"
+        app:layout_constraintEnd_toStartOf="@+id/textView12"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_rocket"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </android.support.constraint.ConstraintLayout>

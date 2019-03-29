@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
     boolean inTeleop;
     boolean color = false;
     boolean inTeleopColor;
-    boolean SandButBackround = false;
+    boolean SandButVBackround = false;
+    boolean SandButABackround = false;
     ImageButton S1;
     ImageView Timage;
 
@@ -59,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
     TextView Center;
     TextView Right;
     TextView Front;
+    TextView Left2;
+    TextView Center2;
+    TextView Right2;
+    TextView Front2;
 
 
     CheckBox RTopleft;
@@ -219,6 +224,10 @@ public class MainActivity extends AppCompatActivity {
         Center = findViewById(R.id.Center);
         Right = findViewById(R.id.Right);
         Front = findViewById(R.id.Front);
+        Left2 = findViewById(R.id.left2);
+        Center2 = findViewById(R.id.center);
+        Right2 = findViewById(R.id.right2);
+        Front2 = findViewById(R.id.front);
 
 
         ((TextView) findViewById(R.id.notes)).setText("");
@@ -302,18 +311,14 @@ public class MainActivity extends AppCompatActivity {
         Center.setTextSize(20 * getResources().getDisplayMetrics().density);
         Right.setTextSize(20 * getResources().getDisplayMetrics().density);
         Front.setTextSize(20 * getResources().getDisplayMetrics().density);
+        Left2.setTextSize(20 * getResources().getDisplayMetrics().density);
+        Center2.setTextSize(20 * getResources().getDisplayMetrics().density);
+        Right2.setTextSize(20 * getResources().getDisplayMetrics().density);
+        Front2.setTextSize(20 * getResources().getDisplayMetrics().density);
 
 
         inTeleop = false;
         inTeleopColor = false;
-
-
-        StandStorm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
 
         sw.setFactory(new ViewSwitcher.ViewFactory() {
@@ -339,12 +344,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         sw1.setImageResource(R.mipmap.g400);
-        Teleop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         RTopleft.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -606,8 +605,8 @@ public class MainActivity extends AppCompatActivity {
         svision.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SandButBackround = !SandButBackround;
-                if (SandButBackround) {
+                SandButVBackround = !SandButVBackround;
+                if (SandButVBackround) {
                     svision.setBackgroundResource(android.R.drawable.button_onoff_indicator_off);
                 } else {
                     svision.setBackgroundResource(android.R.drawable.button_onoff_indicator_on);
@@ -617,8 +616,8 @@ public class MainActivity extends AppCompatActivity {
         sauto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SandButBackround = !SandButBackround;
-                if (SandButBackround) {
+                SandButABackround = !SandButABackround;
+                if (SandButABackround) {
                     sauto.setBackgroundResource(android.R.drawable.button_onoff_indicator_off);
                 } else {
                     sauto.setBackgroundResource(android.R.drawable.button_onoff_indicator_on);
@@ -671,29 +670,43 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("Communication issues: " + ci.isChecked());
                     myOutWriter.println("Dropped Battery/Bumpers/Parts: " + dbbp.isChecked());
                     myOutWriter.println("speed: " + ((Spinner) findViewById(R.id.speed)).getSelectedItem().toString());
-                    myOutWriter.println("Hatch in top left: " + RTopleft.isChecked());
-                    myOutWriter.println("Hatch in top Right: " + RTopright.isChecked());
-                    myOutWriter.println("Hatch in top Right Left: " + RTopleft1.isChecked());
-                    myOutWriter.println("Hatch in top Right Right: " + RTopright1.isChecked());
-                    myOutWriter.println("Ball in middle left: " + RmiddleLeft.isChecked());
-                    myOutWriter.println("Hatch in middle Right left: " + RmiddleLeft1.isChecked());
-                    myOutWriter.println("Hatch in middle Right Right: " + RmiddleRight1.isChecked());
-                    myOutWriter.println("Hatch in middle Right: " + RmiddleRight.isChecked());
-                    myOutWriter.println("Hatch in Bottom left: " + RBottoml.isChecked());
-                    myOutWriter.println("Hatch in Bottom Right: " + RBottomRight.isChecked());
-                    myOutWriter.println("Hatch in Bottom Right Right: " + RBottomRight1.isChecked());
-                    myOutWriter.println("Hatch in Bottom Left Right: " + RBottomleft1.isChecked());
-                    myOutWriter.println("Balls In top of Rocket: " + tn + tnr);
-                    myOutWriter.println("Balls In Middle of Rocket: " + mn + nmr);
-                    myOutWriter.println("Balls In Bottom of Rocket: " + Bn + BNr);
-                    myOutWriter.println("Hatch in Bottom left: " + LH.isChecked());
-                    myOutWriter.println("Hatch in Bottom left: " + CLH.isChecked());
-                    myOutWriter.println("Hatch in Bottom left: " + RLH.isChecked());
-                    myOutWriter.println("Hatch in Bottom left: " + FLH.isChecked());
-                    myOutWriter.println("Hatch in Bottom left: " + LRH.isChecked());
-                    myOutWriter.println("Hatch in Bottom left: " + CRH.isChecked());
-                    myOutWriter.println("Hatch in Bottom left: " + RRH.isChecked());
-                    myOutWriter.println("Hatch in Bottom left: "+ FRH.isChecked());
+                   // Left Rocket bleow
+                    myOutWriter.println("LR_TLH: " + RTopleft.isChecked());
+                    myOutWriter.println("LR_TRH: " + RTopright.isChecked());
+                    myOutWriter.println("LR_MLH: " + RmiddleLeft.isChecked());
+                    myOutWriter.println("LR_MRH: " + RmiddleRight.isChecked());
+                    myOutWriter.println("LR_BLH: " + RBottoml.isChecked());
+                    myOutWriter.println("LR_BRH: " + RBottomRight.isChecked());
+                    // Right Rocket below
+                    myOutWriter.println("RR_TLH: " + RTopleft1.isChecked());
+                    myOutWriter.println("RR_TRH: " + RTopright1.isChecked());
+                    myOutWriter.println("RR_MLH: " + RmiddleLeft1.isChecked());
+                    myOutWriter.println("RR_MRH: " + RmiddleRight1.isChecked());
+                    myOutWriter.println("RR_BLH: " + RBottomleft1.isChecked());
+                    myOutWriter.println("RR_BRH: " + RBottomRight1.isChecked());
+                    // Cargo Ship below
+                    myOutWriter.println("Balls In top of Rocket: " + (tn + tnr));
+                    myOutWriter.println("Balls In Middle of Rocket: " + (mn + nmr));
+                    myOutWriter.println("Balls In Bottom of Rocket: " + (Bn + BNr));
+                    // Cargo Ship Hatches
+                    myOutWriter.println("CS_LH1" + LH.isChecked() );
+                    myOutWriter.println("CS_LH2" + CLH.isChecked());
+                    myOutWriter.println("CS_LH3" + RLH.isChecked());
+                    myOutWriter.println("CS_RH1" + LRH.isChecked());
+                    myOutWriter.println("CS_RH2" + CRH.isChecked());
+                    myOutWriter.println("CS_RH3" + RRH.isChecked());
+                    myOutWriter.println("CS_LH0" + FLH.isChecked());
+                    myOutWriter.println("CS_RH0" + FRH.isChecked());
+                    // Cargo Ship Balls
+                    myOutWriter.println("CS_LB1" + LB.isChecked() );
+                    myOutWriter.println("CS_LB2" + CLB.isChecked());
+                    myOutWriter.println("CS_LB3" + RLB.isChecked());
+                    myOutWriter.println("CS_RB1" + RLB.isChecked());
+                    myOutWriter.println("CS_RB2" + CRB.isChecked());
+                    myOutWriter.println("CS_RB3" + RRB.isChecked());
+                    myOutWriter.println("CS_LB0" + FLB.isChecked());
+                    myOutWriter.println("CS_RB0" + FRB.isChecked());
+
                     myOutWriter.println("notes: "+ notes);
                     myOutWriter.println("Won: "+ ((Spinner)findViewById(R.id.wlt)).getSelectedItem().toString());
                     myOutWriter.println("Level: "+ ((Spinner)findViewById(R.id.EndGame)).getSelectedItem().toString());
@@ -765,6 +778,18 @@ public class MainActivity extends AppCompatActivity {
         ((Spinner) findViewById(R.id.EndGame)).setSelection(0);
         ((Spinner) findViewById(R.id.StartingP)).setSelection(0);
         ((Spinner) findViewById(R.id.speed)).setSelection(0);
+
+        ((TextView) findViewById(R.id.sandBallA)).setText("0");
+        ((TextView) findViewById(R.id.sandHatchA)).setText("0");
+
+        SandButABackround = false;
+        SandButVBackround = false;
+        sauto.setBackgroundResource(android.R.drawable.button_onoff_indicator_off);
+        svision.setBackgroundResource(android.R.drawable.button_onoff_indicator_off);
+        sw1.setImageResource(R.mipmap.g383);
+        sw.setImageResource(R.mipmap.blank);
+
+        inTeleop = false;
         sandstormscore = 0;
         setSandstormScore(0);
         sw1.setImageResource(R.mipmap.g383);

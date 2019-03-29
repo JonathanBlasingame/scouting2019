@@ -9,7 +9,7 @@
     <string-array name="speedValues">
         <item>Speed</item>
         <item>Slow</item>
-        <item>Advarage</item>
+        <item>Average</item>
         <item>Fast</item>
     </string-array>
     <string-array name="StaringSpot">
