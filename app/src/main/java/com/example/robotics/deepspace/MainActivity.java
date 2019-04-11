@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -28,8 +30,6 @@ import java.io.PrintWriter;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageSwitcher sw;
-    private ImageSwitcher sw1;
     Button BtnTP;
     Button BtnTN;
     Button BtnTnr;
@@ -44,18 +44,15 @@ public class MainActivity extends AppCompatActivity {
     Button BtnBNr;
     Button StandStorm;
     Button Teleop;
-    Button svision;
-    Button sauto;
     boolean inTeleop;
     boolean color = false;
     boolean inTeleopColor;
     boolean SandButVBackround = false;
     boolean SandButABackround = false;
+
     ImageButton S1;
     ImageView Timage;
-
-    TextView sandBallA;
-    TextView sandHatchA;
+    ImageView TeamImage;
     TextView Left;
     TextView Center;
     TextView Right;
@@ -64,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     TextView Center2;
     TextView Right2;
     TextView Front2;
+    TextView TeamNumber;
 
 
     CheckBox RTopleft;
@@ -122,37 +120,20 @@ public class MainActivity extends AppCompatActivity {
     String wlt = "";
     String EndGame = "";
     String StartingP ="";
+    String sandBallA ="";
+    String sandHatchA ="";
+
     String speed = "";
     TextView txtCount;
 
-
-    public void setSandstormScore(int score) {
-        sandBallA.setText("" + score);
-    }
-
-    public void setHatchScore(int score) {
-        sandHatchA.setText("" + score);
-    }
-
     int increaseShipBallScore(int id) {
-        TextView txtCount = findViewById(id);
-        String countValue = txtCount.getText().toString();
-        int intCountValue = Integer.parseInt(countValue);
-        int oldValue = intCountValue;
-        intCountValue = Math.min(intCountValue - 0, 1);
-        intCountValue++;
-        txtCount.setText(String.valueOf(intCountValue));
-        if (oldValue != intCountValue) {
-            if (inTeleop) {
-                /** we are in telleop */
-                teleopscore += (intCountValue - oldValue);
-            } else {
-                /** we are in Sandstorm */
-                sandstormscore += (intCountValue - oldValue);
-                setSandstormScore(sandstormscore);
-            }
-        }
-        return intCountValue;
+        TextView view = findViewById(id);
+        String fieldValue = view.getText().toString();
+        int currentValue = Integer.parseInt(fieldValue);
+        int newValue = Math.min(1, currentValue);
+        newValue++;
+        view.setText(String.valueOf(newValue));
+        return newValue;
     }
 
     int decreaseShipBallScore(int id) {
@@ -162,38 +143,41 @@ public class MainActivity extends AppCompatActivity {
         int oldValue = intCountValue;
         intCountValue = Math.max(intCountValue - 1, 0);
         txtCount.setText(String.valueOf(intCountValue));
-        if (oldValue != intCountValue) {
-            if (inTeleop) {
-                teleopscore += (intCountValue - oldValue);
-            } else {
-                sandstormscore += (intCountValue - oldValue);
-                setSandstormScore(sandstormscore);
-            }
-        }
         return intCountValue;
     }
 
-    void handleCheckboxChange(boolean isChecked) {
-        if (inTeleop) {
-            teleopscore += isChecked ? 1 : -1;
-        } else {
-            hatchScore += isChecked ? 1 : -1;
-            setHatchScore(hatchScore);
-        }
-    }
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//        super.onWindowFocusChanged(hasFocus);
+//        if (hasFocus) {
+//            hideSystemUI();
+//        }
+//    }
 
-    void handleBallCheckboxChange(boolean isChecked) {
-        if (inTeleop) {
-            teleopscore += isChecked ? 1 : -1;
-        } else {
-            sandstormscore += isChecked ? 1 : -1;
-            setSandstormScore(sandstormscore);
-        }
+    private void hideSystemUI() {
+        // Enables regular immersive mode.
+        // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
+        // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_IMMERSIVE
+                        // Set the content to appear under the system bars so that the
+                        // content doesn't resize when the system bars hide and show.
+                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        // Hide the nav bar and status bar
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
         BtnTP = findViewById(R.id.BtnTP);
         BtnTN = findViewById(R.id.BtnTN);
@@ -210,8 +194,6 @@ public class MainActivity extends AppCompatActivity {
         StandStorm = findViewById(R.id.StandStorm);
         Teleop = findViewById(R.id.Teleop);
         Teleop = findViewById(R.id.Teleop);
-        sandBallA = findViewById(R.id.sandBallA);
-        sandHatchA = findViewById(R.id.sandHatchA);
         RTopleft = findViewById(R.id.RTopleft);
         RTopleft1 = findViewById(R.id.RTopleft1);
         RTopright = findViewById(R.id.RTopright);
@@ -228,13 +210,9 @@ public class MainActivity extends AppCompatActivity {
         Center2 = findViewById(R.id.center);
         Right2 = findViewById(R.id.right2);
         Front2 = findViewById(R.id.front);
-
-
+        TeamNumber = findViewById(R.id.teamNumber);
+        TeamImage = findViewById(R.id.TeamImage);
         ((TextView) findViewById(R.id.notes)).setText("");
-        svision = findViewById(R.id.svision);
-        sauto = findViewById(R.id.sauto);
-        sw = (ImageSwitcher) findViewById(R.id.imageSwitcher1);
-        sw1 = (ImageSwitcher) findViewById(R.id.imageSwitcher2);
 
         RBottoml = findViewById(R.id.RBottoml);
         RBottomRight = findViewById(R.id.RBottomRight);
@@ -290,9 +268,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        sandBallA.setTextSize(20 * getResources().getDisplayMetrics().density);
-        sandHatchA.setTextSize(20 * getResources().getDisplayMetrics().density);
+        //sets text size
         Teleop.setTextSize(14 * getResources().getDisplayMetrics().density);
         StandStorm.setTextSize(14 * getResources().getDisplayMetrics().density);
         BtnTP.setTextSize(14 * getResources().getDisplayMetrics().density);
@@ -320,218 +296,6 @@ public class MainActivity extends AppCompatActivity {
         inTeleop = false;
         inTeleopColor = false;
 
-
-        sw.setFactory(new ViewSwitcher.ViewFactory() {
-            @Override
-            public View makeView() {
-                ImageView myView = new ImageView(getApplicationContext());
-                myView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                myView.setLayoutParams(new
-                        ImageSwitcher.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT,
-                        ActionBar.LayoutParams.WRAP_CONTENT));
-                return myView;
-            }
-        });
-        sw1.setFactory(new ViewSwitcher.ViewFactory() {
-            @Override
-            public View makeView() {
-                ImageView myView = new ImageView(getApplicationContext());
-                myView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                myView.setLayoutParams(new
-                        ImageSwitcher.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT,
-                        ActionBar.LayoutParams.WRAP_CONTENT));
-                return myView;
-            }
-        });
-        sw1.setImageResource(R.mipmap.g400);
-        RTopleft.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        RTopleft1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        RTopright.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        RTopright1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        RmiddleRight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        RmiddleRight1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        RmiddleLeft1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        RmiddleLeft.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        RBottoml.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        RBottomRight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        RBottomleft1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        RBottomRight1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        LH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        CLH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        RLH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        FLH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        LRH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        CRH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        RRH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        FRH.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleCheckboxChange(isChecked);
-            }
-        });
-        LB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleBallCheckboxChange(isChecked);
-            }
-        });
-        CLB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleBallCheckboxChange(isChecked);
-            }
-        });
-        RLB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleBallCheckboxChange(isChecked);
-            }
-        });
-        LRb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleBallCheckboxChange(isChecked);
-            }
-        });
-        FLB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleBallCheckboxChange(isChecked);
-            }
-        });
-
-        CRB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleBallCheckboxChange(isChecked);
-            }
-        });
-        RRB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleBallCheckboxChange(isChecked);
-            }
-        });
-        FRB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                handleBallCheckboxChange(isChecked);
-            }
-        });
-
-
-        StandStorm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                inTeleop = false;
-                sw1.setImageResource(R.mipmap.g383);
-                sw.setImageResource(R.mipmap.blank);
-            }
-        });
-
-        Teleop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                inTeleop = true;
-                sw.setImageResource(R.mipmap.g383);
-                sw1.setImageResource(R.mipmap.blank);
-            }
-        });
 
         S1 = findViewById(R.id.s1);
         BtnTP.setOnClickListener(new View.OnClickListener() {
@@ -602,34 +366,28 @@ public class MainActivity extends AppCompatActivity {
                 BNr = decreaseShipBallScore(R.id.BNr);
             }
         });
-        svision.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SandButVBackround = !SandButVBackround;
-                if (SandButVBackround) {
-                    svision.setBackgroundResource(android.R.drawable.button_onoff_indicator_off);
-                } else {
-                    svision.setBackgroundResource(android.R.drawable.button_onoff_indicator_on);
-                }
-            }
-        });
-        sauto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SandButABackround = !SandButABackround;
-                if (SandButABackround) {
-                    sauto.setBackgroundResource(android.R.drawable.button_onoff_indicator_off);
-                } else {
-                    sauto.setBackgroundResource(android.R.drawable.button_onoff_indicator_on);
-                }
-            }
-        });
 
         BtnBPr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BNr = increaseShipBallScore(R.id.BNr);
 
+            }
+        });
+        TeamNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+                if (!hasFocus) {
+                   teamNumber = getIntValue(R.id.teamNumber, "Team Number");
+                   if(teamNumber == 1706 ){
+                      TeamImage.setImageResource(R.mipmap.rrlogo);
+                   }else if(teamNumber == 4329){
+                      TeamImage.setImageResource(R.mipmap.lr2);
+                   }else{
+                       TeamImage.setImageResource(R.mipmap.blank);
+                   }
+                }
             }
         });
         S1.setOnClickListener(new View.OnClickListener() {
@@ -639,10 +397,13 @@ public class MainActivity extends AppCompatActivity {
                 ScouterName = ((TextView) findViewById(R.id.ScouterName)).getText().toString();
                 String notes = ((TextView) findViewById(R.id.notes)).getText().toString();
                 teamNumber = getIntValue(R.id.teamNumber, "Team Number");
-                finalScore = getIntValue(R.id.finalScore, "Final Score");
                 int match = getIntValue(R.id.matchNumber, "Match Number");
 
-                if (ScouterName == null || ScouterName.length() == 0 || match == 0 || teamNumber == 0 || finalScore == 0 || wlt.equalsIgnoreCase("Results")|| StartingP.equalsIgnoreCase("Postion")|| EndGame.equalsIgnoreCase("EndGame")) {
+                if (ScouterName == null || ScouterName.length() == 0 || match == 0
+                        || teamNumber == 0
+                        || ((Spinner)findViewById(R.id.wlt)).getSelectedItem().toString().equalsIgnoreCase("Results")
+                        || ((Spinner)findViewById(R.id.StartingP)).getSelectedItem().toString().equalsIgnoreCase("Postion")
+                        || ((Spinner)findViewById(R.id.EndGame)).getSelectedItem().toString().equalsIgnoreCase("EndGame")){
                     Toast.makeText(getApplicationContext(), "Please complete the form before saving", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -663,8 +424,8 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("RedAlliance: " + RedAlliance.isChecked());
                     myOutWriter.println("BlueAlliance: " + BlueAlliance.isChecked());
                     myOutWriter.println("Postion: "+ ((Spinner)findViewById(R.id.StartingP)).getSelectedItem().toString());
-                    myOutWriter.println("Balls In SandStorm: " + sandBallA.getText());
-                    myOutWriter.println("Hatch In SandStorm: " + sandHatchA.getText());
+                    myOutWriter.println("Balls in SandStorm: "+ ((Spinner)findViewById(R.id.sandBallA)).getSelectedItem().toString());
+                    myOutWriter.println("Hatches in SandStorm: "+ ((Spinner)findViewById(R.id.sandHatchA)).getSelectedItem().toString());
                     myOutWriter.println("Fell Over: " + fo.isChecked());
                     myOutWriter.println("Broke Down: " + bd.isChecked());
                     myOutWriter.println("Communication issues: " + ci.isChecked());
@@ -684,32 +445,34 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("RR_MRH: " + RmiddleRight1.isChecked());
                     myOutWriter.println("RR_BLH: " + RBottomleft1.isChecked());
                     myOutWriter.println("RR_BRH: " + RBottomRight1.isChecked());
+
                     // Cargo Ship below
                     myOutWriter.println("Balls In top of Rocket: " + (tn + tnr));
                     myOutWriter.println("Balls In Middle of Rocket: " + (mn + nmr));
                     myOutWriter.println("Balls In Bottom of Rocket: " + (Bn + BNr));
                     // Cargo Ship Hatches
-                    myOutWriter.println("CS_LH1" + LH.isChecked() );
-                    myOutWriter.println("CS_LH2" + CLH.isChecked());
-                    myOutWriter.println("CS_LH3" + RLH.isChecked());
-                    myOutWriter.println("CS_RH1" + LRH.isChecked());
-                    myOutWriter.println("CS_RH2" + CRH.isChecked());
-                    myOutWriter.println("CS_RH3" + RRH.isChecked());
-                    myOutWriter.println("CS_LH0" + FLH.isChecked());
-                    myOutWriter.println("CS_RH0" + FRH.isChecked());
+                    myOutWriter.println("CS_LH1: " + LH.isChecked() );
+                    myOutWriter.println("CS_LH2: " + CLH.isChecked());
+                    myOutWriter.println("CS_LH3: " + RLH.isChecked());
+                    myOutWriter.println("CS_RH1: " + LRH.isChecked());
+                    myOutWriter.println("CS_RH2: " + CRH.isChecked());
+                    myOutWriter.println("CS_RH3: " + RRH.isChecked());
+                    myOutWriter.println("CS_LH0: " + FLH.isChecked());
+                    myOutWriter.println("CS_RH0: " + FRH.isChecked());
                     // Cargo Ship Balls
-                    myOutWriter.println("CS_LB1" + LB.isChecked() );
-                    myOutWriter.println("CS_LB2" + CLB.isChecked());
-                    myOutWriter.println("CS_LB3" + RLB.isChecked());
-                    myOutWriter.println("CS_RB1" + RLB.isChecked());
-                    myOutWriter.println("CS_RB2" + CRB.isChecked());
-                    myOutWriter.println("CS_RB3" + RRB.isChecked());
-                    myOutWriter.println("CS_LB0" + FLB.isChecked());
-                    myOutWriter.println("CS_RB0" + FRB.isChecked());
+                    myOutWriter.println("CS_LB1: " + LB.isChecked() );
+                    myOutWriter.println("CS_LB2: " + CLB.isChecked());
+                    myOutWriter.println("CS_LB3: " + RLB.isChecked());
+                    myOutWriter.println("CS_RB1: " + RLB.isChecked());
+                    myOutWriter.println("CS_RB2: " + CRB.isChecked());
+                    myOutWriter.println("CS_RB3: " + RRB.isChecked());
+                    myOutWriter.println("CS_LB0: " + FLB.isChecked());
+                    myOutWriter.println("CS_RB0: " + FRB.isChecked());
 
                     myOutWriter.println("notes: "+ notes);
                     myOutWriter.println("Won: "+ ((Spinner)findViewById(R.id.wlt)).getSelectedItem().toString());
                     myOutWriter.println("Level: "+ ((Spinner)findViewById(R.id.EndGame)).getSelectedItem().toString());
+
 
 
                     myOutWriter.flush();
@@ -719,6 +482,7 @@ public class MainActivity extends AppCompatActivity {
                     toast = Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT);
                     toast.show();
                     resetapp();
+
                 } catch (IOException e) {
                     toast = Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT);
                     Log.e("Exception", "File write failed: " + e.toString());
@@ -730,7 +494,6 @@ public class MainActivity extends AppCompatActivity {
     public void resetapp() {
         ((TextView) findViewById(R.id.matchNumber)).setText("" + (1 + Integer.parseInt(((TextView) findViewById(R.id.matchNumber)).getText().toString())));
         ((TextView) findViewById(R.id.teamNumber)).setText("");
-        ((TextView) findViewById(R.id.finalScore)).setText("");
         ((TextView) findViewById(R.id.notes)).setText("");
         ((CheckBox) findViewById(R.id.RTopleft)).setChecked(false);
         ((CheckBox) findViewById(R.id.RmiddleLeft)).setChecked(false);
@@ -772,27 +535,19 @@ public class MainActivity extends AppCompatActivity {
         ((CheckBox) findViewById(R.id.CRH)).setChecked(false);
         ((CheckBox) findViewById(R.id.LRB)).setChecked(false);
         ((CheckBox) findViewById(R.id.LRH)).setChecked(false);
-        ((Button) findViewById(R.id.svision)).setTextColor(Color.BLACK);
-        ((Button) findViewById(R.id.sauto)).setTextColor(Color.BLACK);
         ((Spinner) findViewById(R.id.wlt)).setSelection(0);
         ((Spinner) findViewById(R.id.EndGame)).setSelection(0);
         ((Spinner) findViewById(R.id.StartingP)).setSelection(0);
+        ((Spinner) findViewById(R.id.sandBallA)).setSelection(0);
+        ((Spinner) findViewById(R.id.sandHatchA)).setSelection(0);
         ((Spinner) findViewById(R.id.speed)).setSelection(0);
-
-        ((TextView) findViewById(R.id.sandBallA)).setText("0");
-        ((TextView) findViewById(R.id.sandHatchA)).setText("0");
 
         SandButABackround = false;
         SandButVBackround = false;
-        sauto.setBackgroundResource(android.R.drawable.button_onoff_indicator_off);
-        svision.setBackgroundResource(android.R.drawable.button_onoff_indicator_off);
-        sw1.setImageResource(R.mipmap.g383);
-        sw.setImageResource(R.mipmap.blank);
 
         inTeleop = false;
         sandstormscore = 0;
-        setSandstormScore(0);
-        sw1.setImageResource(R.mipmap.g383);
+        TeamImage.setImageResource(R.mipmap.blank);
     }
 
     private int getIntValue(int id, String name) {
@@ -805,9 +560,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-    private File getDataDirectory() {
-        File directory = Environment.getExternalStorageDirectory();
+private File getDataDirectory() {    File directory = Environment.getExternalStorageDirectory();
         File myDir = new File(directory + "/ScoutingData");
         myDir.mkdirs();
         return myDir;
