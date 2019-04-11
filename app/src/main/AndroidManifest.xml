@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/frc_game_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:hardwareAccelerated="true"
         >
         <activity android:name=".MainActivity" android:windowSoftInputMode="stateUnchanged" android:screenOrientation="portrait" >
             <intent-filter>
