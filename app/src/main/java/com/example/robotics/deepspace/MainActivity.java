@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     Button BtnBNr;
     Button StandStorm;
     Button Teleop;
+    Button Field;
     boolean inTeleop;
     boolean color = false;
     boolean inTeleopColor;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     boolean SandButABackround = false;
 
     ImageButton S1;
+    ImageButton Ns;
     ImageView Timage;
     ImageView TeamImage;
     TextView Left;
@@ -191,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
         BtnBN = findViewById(R.id.BtnBN);
         BtnBNr = findViewById(R.id.BtnBNr);
         BtnBPr = findViewById(R.id.BtnBPr);
+        Field = findViewById(R.id.Field);
         StandStorm = findViewById(R.id.StandStorm);
         Teleop = findViewById(R.id.Teleop);
         Teleop = findViewById(R.id.Teleop);
@@ -390,7 +393,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        S1.setOnClickListener(new View.OnClickListener() {
+        //Did Not Show Save Button
+            Ns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 File dir = getDataDirectory();
@@ -399,14 +403,7 @@ public class MainActivity extends AppCompatActivity {
                 teamNumber = getIntValue(R.id.teamNumber, "Team Number");
                 int match = getIntValue(R.id.matchNumber, "Match Number");
 
-                if (ScouterName == null || ScouterName.length() == 0 || match == 0
-                        || teamNumber == 0
-                        || ((Spinner)findViewById(R.id.wlt)).getSelectedItem().toString().equalsIgnoreCase("Results")
-                        || ((Spinner)findViewById(R.id.StartingP)).getSelectedItem().toString().equalsIgnoreCase("Postion")
-                        || ((Spinner)findViewById(R.id.EndGame)).getSelectedItem().toString().equalsIgnoreCase("EndGame")){
-                    Toast.makeText(getApplicationContext(), "Please complete the form before saving", Toast.LENGTH_LONG).show();
-                    return;
-                }
+
                 Toast toast = Toast.makeText(getApplicationContext(), "Saving", Toast.LENGTH_SHORT);
                 toast.show();
                 try {
@@ -423,7 +420,102 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("Match: " + match);
                     myOutWriter.println("RedAlliance: " + RedAlliance.isChecked());
                     myOutWriter.println("BlueAlliance: " + BlueAlliance.isChecked());
-                    myOutWriter.println("Postion: "+ ((Spinner)findViewById(R.id.StartingP)).getSelectedItem().toString());
+                    myOutWriter.println("Postion: "+ "FALSE");
+                    myOutWriter.println("Balls in SandStorm: "+ ((Spinner)findViewById(R.id.sandBallA)).getSelectedItem().toString());
+                    myOutWriter.println("Hatches in SandStorm: "+ ((Spinner)findViewById(R.id.sandHatchA)).getSelectedItem().toString());
+                    myOutWriter.println("Fell Over: " + fo.isChecked());
+                    myOutWriter.println("Broke Down: " + bd.isChecked());
+                    myOutWriter.println("Communication issues: " + ci.isChecked());
+                    myOutWriter.println("Dropped Battery/Bumpers/Parts: " + dbbp.isChecked());
+                    myOutWriter.println("speed: " + ((Spinner) findViewById(R.id.speed)).getSelectedItem().toString());
+                   // Left Rocket bleow
+                    myOutWriter.println("LR_TLH: " + RTopleft.isChecked());
+                    myOutWriter.println("LR_TRH: " + RTopright.isChecked());
+                    myOutWriter.println("LR_MLH: " + RmiddleLeft.isChecked());
+                    myOutWriter.println("LR_MRH: " + RmiddleRight.isChecked());
+                    myOutWriter.println("LR_BLH: " + RBottoml.isChecked());
+                    myOutWriter.println("LR_BRH: " + RBottomRight.isChecked());
+                    // Right Rocket below
+                    myOutWriter.println("RR_TLH: " + RTopleft1.isChecked());
+                    myOutWriter.println("RR_TRH: " + RTopright1.isChecked());
+                    myOutWriter.println("RR_MLH: " + RmiddleLeft1.isChecked());
+                    myOutWriter.println("RR_MRH: " + RmiddleRight1.isChecked());
+                   myOutWriter.println("RR_BLH: " + RBottomleft1.isChecked());
+                    myOutWriter.println("RR_BRH: " + RBottomRight1.isChecked());
+
+                    // Cargo Ship below
+                    myOutWriter.println("Balls In top of Rocket: " + (tn + tnr));
+                    myOutWriter.println("Balls In Middle of Rocket: " + (mn + nmr));
+                    myOutWriter.println("Balls In Bottom of Rocket: " + (Bn + BNr));
+                    // Cargo Ship Hatches
+                    myOutWriter.println("CS_LH1: " + LH.isChecked() );
+                    myOutWriter.println("CS_LH2: " + CLH.isChecked());
+                    myOutWriter.println("CS_LH3: " + RLH.isChecked());
+                    myOutWriter.println("CS_RH1: " + LRH.isChecked());
+                    myOutWriter.println("CS_RH2: " + CRH.isChecked());
+                    myOutWriter.println("CS_RH3: " + RRH.isChecked());
+                    myOutWriter.println("CS_LH0: " + FLH.isChecked());
+                    myOutWriter.println("CS_RH0: " + FRH.isChecked());
+                    // Cargo Ship Balls
+                    myOutWriter.println("CS_LB1: " + LB.isChecked() );
+                    myOutWriter.println("CS_LB2: " + CLB.isChecked());
+                    myOutWriter.println("CS_LB3: " + RLB.isChecked());
+                    myOutWriter.println("CS_RB1: " + RLB.isChecked());
+                    myOutWriter.println("CS_RB2: " + CRB.isChecked());
+                    myOutWriter.println("CS_RB3: " + RRB.isChecked());
+                    myOutWriter.println("CS_LB0: " + FLB.isChecked());
+                    myOutWriter.println("CS_RB0: " + FRB.isChecked());
+
+                    myOutWriter.println("notes: "+ notes);
+                    myOutWriter.println("Won: "+ "FALSE");
+                    myOutWriter.println("Level: "+ "FALSE");
+
+
+
+                    myOutWriter.flush();
+                    myOutWriter.close();
+                    fOut.close();
+
+                    toast = Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT);
+                    toast.show();
+                    resetapp();
+
+                } catch (IOException e) {
+                    toast = Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT);
+                    Log.e("Exception", "File write failed: " + e.toString());
+                }
+            }
+        });
+    }
+
+               //Save Button
+            S1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                File dir = getDataDirectory();
+                ScouterName = ((TextView) findViewById(R.id.ScouterName)).getText().toString();
+                String notes = ((TextView) findViewById(R.id.notes)).getText().toString();
+                teamNumber = getIntValue(R.id.teamNumber, "Team Number");
+                int match = getIntValue(R.id.matchNumber, "Match Number");
+
+
+                Toast toast = Toast.makeText(getApplicationContext(), "Saving", Toast.LENGTH_SHORT);
+                toast.show();
+                try {
+
+                    Long myCurrentTimeMillis = System.currentTimeMillis();
+                    String timeMillis = Long.toString(myCurrentTimeMillis);
+                    File myFile = new File(dir, teamNumber + "_" + match + "_" + timeMillis + ".txt");
+                    FileOutputStream fOut = new FileOutputStream(myFile, true);
+                    PrintWriter myOutWriter = new PrintWriter(new OutputStreamWriter(fOut));
+                    myOutWriter.println("Scouter: " + ScouterName);
+                    myOutWriter.println("Team: " + teamNumber);
+                    myOutWriter.println("Timestamp: " + (new Date()).getTime());
+                    myOutWriter.println("Competition: ");
+                    myOutWriter.println("Match: " + match);
+                    myOutWriter.println("RedAlliance: " + RedAlliance.isChecked());
+                    myOutWriter.println("BlueAlliance: " + BlueAlliance.isChecked());
+                    myOutWriter.println("Postion: "+ "FALSE");
                     myOutWriter.println("Balls in SandStorm: "+ ((Spinner)findViewById(R.id.sandBallA)).getSelectedItem().toString());
                     myOutWriter.println("Hatches in SandStorm: "+ ((Spinner)findViewById(R.id.sandHatchA)).getSelectedItem().toString());
                     myOutWriter.println("Fell Over: " + fo.isChecked());
@@ -470,8 +562,8 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("CS_RB0: " + FRB.isChecked());
 
                     myOutWriter.println("notes: "+ notes);
-                    myOutWriter.println("Won: "+ ((Spinner)findViewById(R.id.wlt)).getSelectedItem().toString());
-                    myOutWriter.println("Level: "+ ((Spinner)findViewById(R.id.EndGame)).getSelectedItem().toString());
+                    myOutWriter.println("Won: "+ "FALSE");
+                    myOutWriter.println("Level: "+ "FALSE");
 
 
 
