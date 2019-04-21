@@ -299,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
         inTeleop = false;
         inTeleopColor = false;
 
-
+        Ns = findViewById(R.id.Ns);
         S1 = findViewById(R.id.s1);
         BtnTP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -403,6 +403,14 @@ public class MainActivity extends AppCompatActivity {
                 teamNumber = getIntValue(R.id.teamNumber, "Team Number");
                 int match = getIntValue(R.id.matchNumber, "Match Number");
 
+                if (ScouterName == null || ScouterName.length() == 0 || match == 0
+                        || teamNumber == 0
+                        || ((Spinner)findViewById(R.id.wlt)).getSelectedItem().toString().equalsIgnoreCase("Results")
+                        || ((Spinner)findViewById(R.id.StartingP)).getSelectedItem().toString().equalsIgnoreCase("Postion")
+                        || ((Spinner)findViewById(R.id.EndGame)).getSelectedItem().toString().equalsIgnoreCase("EndGame")){
+                    Toast.makeText(getApplicationContext(), "Please complete the form before saving", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 Toast toast = Toast.makeText(getApplicationContext(), "Saving", Toast.LENGTH_SHORT);
                 toast.show();
@@ -420,7 +428,7 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("Match: " + match);
                     myOutWriter.println("RedAlliance: " + RedAlliance.isChecked());
                     myOutWriter.println("BlueAlliance: " + BlueAlliance.isChecked());
-                    myOutWriter.println("Postion: "+ "FALSE");
+                    myOutWriter.println("Postion: "+ ((Spinner)findViewById(R.id.StartingP)).getSelectedItem().toString());
                     myOutWriter.println("Balls in SandStorm: "+ ((Spinner)findViewById(R.id.sandBallA)).getSelectedItem().toString());
                     myOutWriter.println("Hatches in SandStorm: "+ ((Spinner)findViewById(R.id.sandHatchA)).getSelectedItem().toString());
                     myOutWriter.println("Fell Over: " + fo.isChecked());
@@ -467,8 +475,8 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("CS_RB0: " + FRB.isChecked());
 
                     myOutWriter.println("notes: "+ notes);
-                    myOutWriter.println("Won: "+ "FALSE");
-                    myOutWriter.println("Level: "+ "FALSE");
+                    myOutWriter.println("Won: "+ ((Spinner)findViewById(R.id.wlt)).getSelectedItem().toString());
+                    myOutWriter.println("Level: "+ ((Spinner)findViewById(R.id.EndGame)).getSelectedItem().toString());
 
 
 
@@ -486,7 +494,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
 
                //Save Button
             S1.setOnClickListener(new View.OnClickListener() {
