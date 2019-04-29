@@ -428,7 +428,7 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("Match: " + match);
                     myOutWriter.println("RedAlliance: " + RedAlliance.isChecked());
                     myOutWriter.println("BlueAlliance: " + BlueAlliance.isChecked());
-                    myOutWriter.println("Postion: "+ ((Spinner)findViewById(R.id.StartingP)).getSelectedItem().toString());
+                    myOutWriter.println("Position: "+ ((Spinner)findViewById(R.id.StartingP)).getSelectedItem().toString());
                     myOutWriter.println("Balls in SandStorm: "+ ((Spinner)findViewById(R.id.sandBallA)).getSelectedItem().toString());
                     myOutWriter.println("Hatches in SandStorm: "+ ((Spinner)findViewById(R.id.sandHatchA)).getSelectedItem().toString());
                     myOutWriter.println("Fell Over: " + fo.isChecked());
